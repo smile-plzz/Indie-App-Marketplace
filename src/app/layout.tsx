@@ -1,38 +1,22 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Lora } from "next/font/google";
-import { getSettings } from "@/lib/content";
 import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "600"],
-  display: "swap",
-  variable: "--font-cormorant",
-});
-
-const lora = Lora({
-  subsets: ["latin"],
-  weight: ["400", "600"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-lora",
-});
-
 export async function generateMetadata(): Promise<Metadata> {
-  const settings = await getSettings();
   return {
     metadataBase: new URL(siteUrl),
     title: {
-      default: `${settings.name}  -  ${settings.role}`,
-      template: `%s  -  ${settings.name}`,
+      default: "Indie App Marketplace: Open-Source Windows Software by Ismail",
+      template: "%s: Indie App Marketplace",
     },
-    description: settings.about[0],
+    description:
+      "A showcase and digital storefront for open-source Windows desktop tools and applications by Ismail. Free source code on GitHub; convenient, signed, ready-to-run installers available.",
     openGraph: {
       type: "website",
-      siteName: settings.name,
-      title: `${settings.name}  -  ${settings.role}`,
-      description: settings.about[0],
+      siteName: "Indie App Marketplace",
+      title: "Indie App Marketplace: Open-Source Windows Software by Ismail",
+      description:
+        "A showcase and digital storefront for open-source Windows desktop tools and applications by Ismail. Free source code on GitHub; convenient, signed, ready-to-run installers available.",
     },
     alternates: { canonical: "/" },
     robots: { index: true, follow: true },
@@ -51,13 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    // The bootstrap script stamps data-theme before hydration, so the server
-    // markup legitimately differs from the DOM React first sees.
-    <html
-      lang="en"
-      className={`${cormorant.variable} ${lora.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
       </head>

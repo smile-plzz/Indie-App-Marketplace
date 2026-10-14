@@ -1,5 +1,5 @@
-import { PublicLayout } from "@/components/PublicLayout";
+import type { ReactNode } from "react";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return <PublicLayout>{children}</PublicLayout>;
+export default function Layout({ children }: { children: ReactNode }) {
+  return <>{children}</>;
 }

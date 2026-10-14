@@ -1,6 +1,6 @@
 {
-  "name": "ismail-hossain-portfolio",
-  "version": "2.0.0",
+  "name": "indie-app-marketplace",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

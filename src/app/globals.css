@@ -36,14 +36,14 @@
 
   /* Meta text  -  kickers, captions, card meta. The handoff assumes neutral-600
      clears AA on the light ground; measured, it is ~3.3:1, which fails at the
-     12–13px these are set in. One step darker passes and keeps the hierarchy
+     12-13px these are set in. One step darker passes and keeps the hierarchy
      (still clearly lighter than body). Dark mode's neutral-600 already clears
      it, so the role only re-points on light. */
   --color-meta: var(--color-neutral-700);
 
-  --font-heading: var(--font-cormorant), Georgia, serif;
+  --font-heading: var(--font-cormorant, "Cormorant Garamond", Georgia, serif);
   --font-heading-weight: 600;
-  --font-body: var(--font-lora), Georgia, serif;
+  --font-body: var(--font-lora, "Lora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, serif);
 
   --space-1: 4.6px;
   --space-2: 9.2px;

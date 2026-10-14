@@ -2,7 +2,7 @@
 
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { PublicLayout } from "@/components/PublicLayout";
+import { MarketplaceLayout } from "@/components/marketplace/MarketplaceLayout";
 import styles from "@/components/store/store.module.css";
 
 function SandboxCheckoutContent() {
@@ -166,10 +166,10 @@ function SandboxCheckoutContent() {
 
 export default function SandboxCheckoutPage() {
   return (
-    <PublicLayout>
+    <MarketplaceLayout>
       <Suspense fallback={<div style={{ padding: "40px", textAlign: "center" }}>Loading checkout...</div>}>
         <SandboxCheckoutContent />
       </Suspense>
-    </PublicLayout>
+    </MarketplaceLayout>
   );
 }

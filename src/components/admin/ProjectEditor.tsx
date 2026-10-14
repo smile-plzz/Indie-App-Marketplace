@@ -161,7 +161,7 @@ export function ProjectEditor({
             </div>
             <Text
               id="imageHeight"
-              label="Masonry height (160–260px)"
+              label="Masonry height (160-260px)"
               value={String(draft.imageHeight)}
               onChange={(v) => set("imageHeight", Number(v) || 200)}
               tnum

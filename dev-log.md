@@ -28,3 +28,18 @@
 - Typecheck: Full repository TypeScript compilation passed with 0 errors (`npm run typecheck`).
 - Production Build: Next.js production build (`next build`) compiled 53 static pages and all dynamic routes successfully with code 0.
 - Guidelines Check: Confirmed zero em-dashes exist anywhere in documentation, UI text, or code comments.
+
+## [2026-10-14 21:09:00 +06:00] - Vercel Showcase Re-architecting
+- User Request: Vercel picked up the portfolio home page at `/`; the marketplace should be a dedicated software showcase and marketplace rather than a personal portfolio.
+- Root Cause Identified: The repository root route (`src/app/(public)/page.tsx`) previously rendered the developer's resume/portfolio with sidebar frame `PublicLayout`, placing the marketplace on a subroute `/store`. When Vercel built the repo, visiting the domain served the portfolio home page.
+- Showcase Re-architecting:
+  1. Converted root path `/` into the primary Indie App Marketplace Showcase and digital storefront, with interactive catalog, app spotlights, open-source transparency notices, and order lookup.
+  2. Created clean `MarketplaceLayout` with modern top navigation, theme toggle, and legal footer, removing personal portfolio sidebar and mobile drawer.
+  3. Removed legacy portfolio routes (`/credentials`, `/film`, `/projects`, `/writing`) so the deployment is 100% focused on software applications.
+  4. Replaced remote `next/font/google` fetches with reliable local/system font fallbacks to eliminate build-time font download timeouts.
+  5. Updated `package.json` name to `indie-app-marketplace` and SEO metadata to "Indie App Marketplace: Open-Source Windows Software by Ismail".
+- Verification:
+  - `npm test`: 8/8 tests passed in 334ms.
+  - `npm run typecheck`: Passed with 0 errors.
+  - `npm run build`: Compiled 35 static/SSG pages with 0 errors.
+  - Zero em-dashes confirmed across the repository.

@@ -3,7 +3,7 @@
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { PublicLayout } from "@/components/PublicLayout";
+import { MarketplaceLayout } from "@/components/marketplace/MarketplaceLayout";
 import styles from "@/components/store/store.module.css";
 
 function DownloadErrorContent() {
@@ -34,12 +34,12 @@ function DownloadErrorContent() {
 
 export default function DownloadErrorPage() {
   return (
-    <PublicLayout>
+    <MarketplaceLayout>
       <div className={styles.container}>
         <Suspense fallback={<div style={{ textAlign: "center", padding: "64px 0" }}>Loading...</div>}>
           <DownloadErrorContent />
         </Suspense>
       </div>
-    </PublicLayout>
+    </MarketplaceLayout>
   );
 }

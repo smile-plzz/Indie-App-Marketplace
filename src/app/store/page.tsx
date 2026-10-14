@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PublicLayout } from "@/components/PublicLayout";
+import { MarketplaceLayout } from "@/components/marketplace/MarketplaceLayout";
 import { getAllProducts } from "@/lib/marketplace/catalog";
 import { StoreCatalog } from "@/components/store/StoreCatalog";
 import styles from "@/components/store/store.module.css";
@@ -15,7 +15,7 @@ export default async function StorePage() {
   const products = await getAllProducts();
 
   return (
-    <PublicLayout>
+    <MarketplaceLayout>
       <div className={styles.container}>
         <div className={styles.hero}>
           <div className={styles.kicker}>Indie App Marketplace</div>
@@ -46,6 +46,6 @@ export default async function StorePage() {
           </div>
         </div>
       </div>
-    </PublicLayout>
+    </MarketplaceLayout>
   );
 }

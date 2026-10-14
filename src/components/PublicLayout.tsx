@@ -9,8 +9,8 @@ import { Plate } from "./Plate";
 import styles from "./Sidebar.module.css";
 
 export async function PublicLayout({ children }: { children: ReactNode }) {
-  const [settings, posts] = await Promise.all([getSettings(), getPosts()]);
-  const items = navItems(posts.length > 0);
+  const [settings] = await Promise.all([getSettings()]);
+  const items = navItems();
 
   return (
     <div className={styles.shell}>

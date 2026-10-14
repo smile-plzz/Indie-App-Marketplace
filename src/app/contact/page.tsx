@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PublicLayout } from "@/components/PublicLayout";
+import { MarketplaceLayout } from "@/components/marketplace/MarketplaceLayout";
 import styles from "@/components/store/store.module.css";
 import Link from "next/link";
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <PublicLayout>
+    <MarketplaceLayout>
       <div className={styles.container}>
         <div style={{ maxWidth: "760px", margin: "0 auto" }}>
           <div className={styles.kicker}>Support</div>
@@ -67,6 +67,6 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-    </PublicLayout>
+    </MarketplaceLayout>
   );
 }

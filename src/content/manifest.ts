@@ -424,7 +424,7 @@ export const ventures: Venture[] = [
     shortName: "NMFM",
     role: "Co-founder",
     period: "2021  -  2022",
-    periodShort: "2021–22",
+    periodShort: "2021-22",
     lead: "Co-led an independent music initiative challenging the culture of unpaid exposure for local artists in Bangladesh.",
     homeBlurb:
       "An independent music initiative challenging the culture of unpaid exposure for local artists in Bangladesh  -  pre-release paid distribution, tier-based artist compensation, live showcases.",
@@ -448,7 +448,7 @@ export const ventures: Venture[] = [
     shortName: "15-Miles",
     role: "Founder",
     period: "2021  -  2023",
-    periodShort: "2021–23",
+    periodShort: "2021-23",
     lead: "Founded and operated a solo video production company specializing in documentaries, music videos, and aerial cinematography.",
     homeBlurb:
       "A solo video production company  -  documentaries, music videos, aerial cinematography. Six drone survey projects for private and government-affiliated clients.",

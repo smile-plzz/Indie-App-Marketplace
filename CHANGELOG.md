@@ -5,6 +5,16 @@ All notable changes to the Indie App Marketplace project will be documented in t
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-10-14
+
+### Changed
+- Converted root home page (`/`) into a dedicated Indie App Marketplace Showcase and digital storefront.
+- Created standalone `MarketplaceLayout` with modern top navigation, app links, order recovery, and legal footer, replacing personal portfolio layout.
+- Removed legacy personal resume/portfolio routes (`/credentials`, `/film`, `/projects`, `/writing`) to ensure Vercel builds strictly the App Marketplace.
+- Removed network-blocking `next/font/google` remote font downloads to prevent build timeouts and ensure offline-first build stability.
+- Updated root SEO metadata to "Indie App Marketplace: Open-Source Windows Software by Ismail".
+- Renamed project in `package.json` to `indie-app-marketplace`.
+
 ## [1.0.0] - 2026-10-14
 
 ### Added

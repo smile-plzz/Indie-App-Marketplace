@@ -1,385 +1,236 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { Section } from "@/components/Section";
-import { ProjectCard } from "@/components/ProjectCard";
-import { ThumbPlate } from "@/components/Plate";
-import { ContactForm } from "@/components/ContactForm";
-import { VisitorCount } from "@/components/VisitorCount";
-import { Reveal } from "@/components/Reveal";
-import { JsonLd } from "@/components/JsonLd";
-import { absolute } from "@/lib/site";
-import { formatShortDate } from "@/lib/date";
-import {
-  getCredentialCounts,
-  getExperiences,
-  getFeaturedProjects,
-  getPosts,
-  getProjects,
-  getSettings,
-  getSkillGroups,
-  getVentures,
-} from "@/lib/content";
-import styles from "./home.module.css";
+import { MarketplaceLayout } from "@/components/marketplace/MarketplaceLayout";
+import { getAllProducts } from "@/lib/marketplace/catalog";
+import { StoreCatalog } from "@/components/store/StoreCatalog";
+import styles from "@/components/store/store.module.css";
 
-/** Image heights for the four secondary cards, authored per the design. */
-const GRID_HEIGHTS = [220, 280, 170, 240];
+export const metadata: Metadata = {
+  title: "Indie App Marketplace: Open-Source Windows Software by Ismail",
+  description:
+    "A personal storefront and showcase for open-source Windows tools. Free source code on GitHub; convenient, signed, ready-to-run installers available.",
+};
 
-export default async function HomePage() {
-  const [
-    settings,
-    skillGroups,
-    featured,
-    allProjects,
-    experiences,
-    ventures,
-    posts,
-    counts,
-  ] = await Promise.all([
-    getSettings(),
-    getSkillGroups(),
-    getFeaturedProjects(),
-    getProjects(),
-    getExperiences(),
-    getVentures(),
-    getPosts(),
-    getCredentialCounts(),
-  ]);
-
-  const [lead, ...rest] = featured;
+export default async function MarketplaceHomePage() {
+  const products = await getAllProducts();
 
   return (
-    <>
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Person",
-          name: settings.name,
-          jobTitle: settings.role,
-          email: `mailto:${settings.email}`,
-          telephone: settings.phoneHref,
-          url: absolute("/"),
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: settings.locationShort,
-          },
-          sameAs: Object.values(settings.links),
-          knowsAbout: skillGroups.flatMap((group) =>
-            group.items.map((item) => item.name),
-          ),
-        }}
-      />
-      <section className={styles.hero}>
-        <div className="kick">{settings.name}</div>
-        <h1 className={`display ${styles.heroTitle}`}>{settings.positioning}</h1>
-        <div className={styles.heroActions}>
-          <a
-            className="btn btn-primary"
-            href={settings.resumeUrl}
-            target="_blank"
-            rel="noreferrer"
+    <MarketplaceLayout>
+      <div className={styles.container}>
+        {/* Hero Section */}
+        <div className={styles.hero} style={{ textAlign: "center", maxWidth: "860px", margin: "0 auto 48px" }}>
+          <div className={styles.kicker}>Personal Showcase & Storefront</div>
+          <h1 className={styles.title} style={{ fontSize: "clamp(34px, 5.5vw, 52px)" }}>
+            Indie Windows Tools, Open-Source & Ready to Run
+          </h1>
+          <p className={styles.subtitle} style={{ margin: "0 auto", fontSize: "18px", maxWidth: "720px" }}>
+            I build fast, privacy-first desktop applications for Windows with zero telemetry.
+            Every tool is completely open-source on GitHub; this store provides ready-to-run, code-signed installers with automatic updates and direct email support.
+          </p>
+
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "12px",
+              justifyContent: "center",
+              marginTop: "24px",
+            }}
           >
-            Download résumé
-          </a>
-          <a className="btn btn-secondary" href={`mailto:${settings.email}`}>
-            {settings.email}
-          </a>
+            <span className={styles.badge} style={{ padding: "6px 14px", fontSize: "13px" }}>
+              ✓ 100% Open-Source (MIT & Apache)
+            </span>
+            <span className={styles.badge} style={{ padding: "6px 14px", fontSize: "13px" }}>
+              ✓ Offline-First (No Telemetry)
+            </span>
+            <span className={styles.badge} style={{ padding: "6px 14px", fontSize: "13px" }}>
+              ✓ SHA-256 Checksums
+            </span>
+            <span className={styles.badge} style={{ padding: "6px 14px", fontSize: "13px" }}>
+              ✓ 14-Day Refund Guarantee
+            </span>
+          </div>
+
+          <div className={styles.ethosCallout} style={{ textAlign: "left", marginTop: "32px" }}>
+            <strong>The Convenience Model:</strong> The fee is for convenience, code-signed binaries, malware-scanned releases, updates, and support, not for locking up the code. The free "build it yourself from GitHub" route is permanently available on every single app page.
+          </div>
         </div>
-      </section>
 
-      <Section kicker="About">
-        <Reveal>
-          {settings.about.map((paragraph, i) => (
-            <p
-              key={i}
-              className="lead"
-              style={i === settings.about.length - 1 ? { marginBottom: 0 } : undefined}
-            >
-              {paragraph}
+        {/* Live Catalog & Search */}
+        <div id="catalog" style={{ scrollMarginTop: "90px", marginBottom: "64px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "20px" }}>
+            <div>
+              <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "28px", margin: "0 0 4px", color: "var(--color-text)" }}>
+                Applications & Utilities
+              </h2>
+              <p style={{ fontSize: "14px", color: "var(--color-meta)", margin: 0 }}>
+                Select an app to view features, system requirements, checksums, or source code.
+              </p>
+            </div>
+          </div>
+
+          <StoreCatalog products={products} />
+        </div>
+
+        {/* Featured Showcase Spotlights */}
+        <div className={styles.sectionBlock}>
+          <div style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 40px" }}>
+            <div className={styles.kicker}>Featured Spotlight</div>
+            <h2 className={styles.sectionHeading} style={{ fontSize: "32px", margin: "0 0 12px" }}>
+              Crafted for Performance & Privacy
+            </h2>
+            <p style={{ fontSize: "15px", color: "var(--color-meta)", margin: 0 }}>
+              Deep dive into some of our most popular desktop utilities.
             </p>
-          ))}
+          </div>
 
-          <div className={styles.skills}>
-            {skillGroups.map((group) => (
-              <div key={group.label}>
-                <div className="kick" style={{ marginBottom: 8 }}>
-                  {group.label}
-                </div>
-                <div className={styles.tagRow}>
-                  {group.items.map((item) => (
-                    <span
-                      key={item.name}
-                      className={`tag ${item.accent ? "tag-accent" : "tag-outline"}`}
+          <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
+            {products.slice(0, 3).map((prod) => (
+              <div
+                key={prod.id}
+                style={{
+                  background: "var(--color-surface)",
+                  border: "1px solid var(--color-divider)",
+                  borderRadius: "12px",
+                  padding: "32px",
+                  display: "grid",
+                  gridTemplateColumns: "1.2fr 1fr",
+                  gap: "32px",
+                  alignItems: "center",
+                }}
+              >
+                <div>
+                  <div style={{ display: "flex", gap: "8px", marginBottom: "12px" }}>
+                    <span className={`${styles.badge} ${styles.badgeAccent}`}>{prod.category}</span>
+                    <span className={styles.badge}>{prod.currentVersion}</span>
+                    <span className={styles.badge}>{prod.license} License</span>
+                  </div>
+
+                  <h3 style={{ fontFamily: "var(--font-heading)", fontSize: "28px", margin: "0 0 12px", color: "var(--color-text)" }}>
+                    {prod.title}
+                  </h3>
+                  <p style={{ fontSize: "15px", color: "var(--color-meta)", lineHeight: "1.6", margin: "0 0 20px" }}>
+                    {prod.description}
+                  </p>
+
+                  <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+                    <Link href={`/store/${prod.slug}`} className={styles.primaryBtn} style={{ width: "auto", padding: "10px 22px" }}>
+                      View Product & Download
+                    </Link>
+                    <a
+                      href={prod.repoUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={styles.secondaryBtn}
+                      style={{ width: "auto", padding: "9px 20px" }}
                     >
-                      {item.name}
-                    </span>
-                  ))}
+                      GitHub Source (Free)
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    background: "var(--color-bg)",
+                    border: "1px solid var(--color-divider)",
+                    borderRadius: "8px",
+                    padding: "24px",
+                  }}
+                >
+                  <strong style={{ fontSize: "14px", color: "var(--color-text)", display: "block", marginBottom: "12px" }}>
+                    Key Highlights:
+                  </strong>
+                  <ul style={{ margin: 0, paddingLeft: "18px", fontSize: "13px", color: "var(--color-meta)", lineHeight: "1.7" }}>
+                    {prod.features.slice(0, 3).map((f, i) => (
+                      <li key={i}>
+                        <strong style={{ color: "var(--color-text)" }}>{f.title}:</strong> {f.description}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div style={{ marginTop: "16px", paddingTop: "12px", borderTop: "1px solid var(--color-divider)", fontSize: "11px", color: "var(--color-meta)", wordBreak: "break-all" }}>
+                    SHA-256: <code>{prod.sha256Checksum}</code>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
-
-          <Link
-            href="/credentials"
-            style={{ fontSize: 13, display: "inline-block", marginTop: 20 }}
-          >
-            All skills &amp; credentials →
-          </Link>
-        </Reveal>
-      </Section>
-
-      <Section
-        variant="full"
-        kicker="Selected work"
-        action={
-          <Link href="/projects" style={{ fontSize: 13 }}>
-            All {allProjects.length} projects →
-          </Link>
-        }
-      >
-        <div className={styles.projectGrid}>
-          {lead ? (
-            <ProjectCard
-              project={lead}
-              variant="featured"
-              imageHeight={320}
-              showYear
-            />
-          ) : null}
-          {rest.map((project, i) => (
-            <div
-              key={project.slug}
-              className={i >= 2 ? styles.selfStart : undefined}
-            >
-              <ProjectCard
-                project={project}
-                variant="grid"
-                imageHeight={GRID_HEIGHTS[i] ?? 220}
-              />
-            </div>
-          ))}
         </div>
-      </Section>
 
-      <Section kicker="Experience">
-        <div className={styles.experience}>
-          {experiences.map((job, i) => (
-            <div key={job.role}>
-              {i > 0 ? <div className="hr" style={{ margin: "0 0 36px" }} /> : null}
-              <div className={styles.roleHead}>
-                <h3 className="display" style={{ fontSize: 25, margin: 0 }}>
-                  {job.role}
-                </h3>
-                <span className="kick tnum" style={{ whiteSpace: "nowrap" }}>
-                  {job.period}
-                </span>
-              </div>
-              <div
-                style={{
-                  fontSize: 14,
-                  color: "var(--color-neutral-700)",
-                  margin: "6px 0 14px",
-                }}
-              >
-                {job.org}
-                {job.orgNote ? ` · ${job.orgNote}` : ""}
-              </div>
-              <ul className={styles.bullets}>
-                {job.bullets.map((bullet, j) => (
-                  <li key={j}>{bullet}</li>
-                ))}
-              </ul>
-              {job.links.length ? (
-                <div style={{ display: "flex", gap: 10, marginTop: 16, flexWrap: "wrap" }}>
-                  {job.links.map((link) => (
-                    <a
-                      key={link.url}
-                      className="btn btn-secondary"
-                      style={{ fontSize: 13 }}
-                      href={link.url}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          ))}
+        {/* Why Buy from Marketplace vs Free Route */}
+        <div className={styles.sectionBlock}>
+          <div style={{ textAlign: "center", maxWidth: "680px", margin: "0 auto 32px" }}>
+            <h2 className={styles.sectionHeading}>What Does the Convenience Fee Cover?</h2>
+            <p style={{ fontSize: "15px", color: "var(--color-meta)" }}>
+              We do not lock away code. Here is an honest breakdown of the two paths:
+            </p>
+          </div>
+
+          <table className={styles.comparisonTable}>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Paid Installer on Store</th>
+                <th>Free Route on GitHub</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Source Code</strong></td>
+                <td>Full access (MIT / Apache)</td>
+                <td>Full access (MIT / Apache)</td>
+              </tr>
+              <tr>
+                <td><strong>Installation</strong></td>
+                <td>One-click setup package (.exe)</td>
+                <td>Requires Git, compiler & tooling</td>
+              </tr>
+              <tr>
+                <td><strong>Security Check</strong></td>
+                <td>Code-signed, malware scanned, SHA-256 hash</td>
+                <td>Self-compiled binary</td>
+              </tr>
+              <tr>
+                <td><strong>Updates</strong></td>
+                <td>Email notification & direct download link</td>
+                <td>Manual git pull & local rebuild</td>
+              </tr>
+              <tr>
+                <td><strong>Support</strong></td>
+                <td>Direct 1-on-1 developer email support</td>
+                <td>GitHub issue tracker community</td>
+              </tr>
+              <tr>
+                <td><strong>Pricing</strong></td>
+                <td>Small convenience fee (BDT / USD)</td>
+                <td>$0 (Free forever)</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </Section>
 
-      <Section
-        variant="full"
-        kicker="Film & drone"
-        action={
-          <Link href="/film" style={{ fontSize: 13 }}>
-            All productions →
-          </Link>
-        }
-      >
-        <h3
-          className="display"
-          style={{ fontSize: 32, margin: "0 0 28px", maxWidth: "26ch" }}
+        {/* Re-download order lookup callout */}
+        <div
+          style={{
+            marginTop: "64px",
+            background: "var(--color-surface)",
+            border: "1px solid var(--color-divider)",
+            borderRadius: "12px",
+            padding: "36px",
+            textAlign: "center",
+          }}
         >
-          Two ventures, run end to end  -  a music label and a production house.
-        </h3>
-        <div className={styles.filmGrid}>
-          {ventures.map((venture) => (
-            <article key={venture.slug}>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "baseline",
-                  gap: 16,
-                }}
-              >
-                <h4 className="display" style={{ fontSize: 20, margin: 0 }}>
-                  {venture.name}
-                </h4>
-                <span className="kick tnum">{venture.periodShort}</span>
-              </div>
-              <div
-                style={{
-                  fontSize: 13,
-                  color: "var(--color-meta)",
-                  margin: "4px 0 12px",
-                }}
-              >
-                {venture.role}
-              </div>
-              <p
-                style={{
-                  fontSize: 14,
-                  lineHeight: 1.65,
-                  color: "var(--color-neutral-800)",
-                }}
-              >
-                {venture.homeBlurb}
-              </p>
-              <div className={styles.thumbGrid}>
-                {venture.videos.map((video) => (
-                  <a
-                    key={video.id}
-                    href={`https://www.youtube.com/watch?v=${video.id}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={video.title}
-                  >
-                    <ThumbPlate
-                      src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
-                      alt={video.title}
-                      height={104}
-                    />
-                  </a>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </Section>
-
-      {posts.length ? (
-        <Section kicker="Writing">
-          {posts.slice(0, 3).map((post, i) => (
-            <Link
-              key={post.slug}
-              href={`/writing/${post.slug}`}
-              className="rowlink"
-              style={
-                i === 0 ? { borderTop: "1px solid var(--color-divider)" } : undefined
-              }
-            >
-              <span className="kick tnum" style={{ width: 92, flex: "none" }}>
-                {formatShortDate(post.date)}
-              </span>
-              <span
-                style={{ fontFamily: "var(--font-heading)", fontSize: 19, flex: 1 }}
-              >
-                {post.title}
-              </span>
-              <span className="kick">
-                {post.kind}
-                {post.readingMinutes ? ` · ${post.readingMinutes} min` : ""}
-              </span>
-            </Link>
-          ))}
-          <Link
-            href="/writing"
-            style={{ fontSize: 13, display: "inline-block", marginTop: 18 }}
-          >
-            All writing →
-          </Link>
-        </Section>
-      ) : null}
-
-      <Section kicker="Credentials">
-        <div className={styles.metrics}>
-          <div className={styles.metricRow}>
-            <Metric value={counts.degrees} label="Degrees" />
-            <Metric value={counts.certifications} label="Certifications" />
-            <Metric value={counts.publications} label="Publications" />
-            <Metric value={counts.academicProjects} label="Academic projects" />
-          </div>
-          <Link className="btn btn-primary" href="/credentials">
-            Education, certifications &amp; research →
+          <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "24px", margin: "0 0 8px", color: "var(--color-text)" }}>
+            Already Purchased a Tool?
+          </h2>
+          <p style={{ fontSize: "14px", color: "var(--color-meta)", maxWidth: "520px", margin: "0 auto 20px", lineHeight: "1.6" }}>
+            If you need to re-download an installer on a new PC or refresh your download quota, use our instant magic link lookup.
+          </p>
+          <Link href="/store/orders" className={styles.primaryBtn} style={{ display: "inline-block", width: "auto", padding: "10px 24px" }}>
+            Access Your Order History
           </Link>
         </div>
-      </Section>
-
-      <Section kicker="Contact" id="contact" last>
-        <div className={styles.contactGrid}>
-          <div>
-            <h3 className="display" style={{ fontSize: 32, margin: "0 0 14px" }}>
-              {settings.contactHeadline}
-            </h3>
-            <ContactForm
-              endpoint={settings.formspreeEndpoint}
-              email={settings.email}
-              phone={settings.phone}
-              phoneHref={settings.phoneHref}
-            />
-          </div>
-          <div className={styles.contactDetails}>
-            <div>
-              <a href={`mailto:${settings.email}`}>{settings.email}</a>
-            </div>
-            <div className="tnum">
-              <a href={`tel:${settings.phoneHref}`}>{settings.phone}</a>
-            </div>
-            <div>{settings.location}</div>
-            <div style={{ marginTop: 14, display: "flex", gap: 14, flexWrap: "wrap" }}>
-              <a href={settings.links.linkedin} target="_blank" rel="noreferrer">
-                LinkedIn
-              </a>
-              <a href={settings.links.github} target="_blank" rel="noreferrer">
-                GitHub
-              </a>
-              <a href={settings.links.youtube} target="_blank" rel="noreferrer">
-                YouTube
-              </a>
-              <a href={settings.links.facebook} target="_blank" rel="noreferrer">
-                Facebook
-              </a>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      <footer className={styles.footer}>
-        <span>© {new Date().getFullYear()} {settings.name}</span>
-        <VisitorCount src={settings.visitorBadgeUrl} />
-      </footer>
-    </>
+      </div>
+    </MarketplaceLayout>
   );
 }
-
-function Metric({ value, label }: { value: number; label: string }) {
-  return (
-    <div>
-      <div className={`${styles.metricValue} tnum`}>{value}</div>
-      <div className="kick">{label}</div>
-    </div>
-  );
-}
-

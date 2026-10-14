@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { PublicLayout } from "@/components/PublicLayout";
+import { MarketplaceLayout } from "@/components/marketplace/MarketplaceLayout";
 import { getProductBySlug, getAllProducts } from "@/lib/marketplace/catalog";
 import { ProductDetailClient } from "@/components/store/ProductDetailClient";
 import styles from "@/components/store/store.module.css";
@@ -42,7 +42,7 @@ export default async function ProductDetailPage({ params }: Props) {
   }
 
   return (
-    <PublicLayout>
+    <MarketplaceLayout>
       <div className={styles.container}>
         <div style={{ marginBottom: "24px" }}>
           <Link
@@ -62,6 +62,6 @@ export default async function ProductDetailPage({ params }: Props) {
 
         <ProductDetailClient product={product} />
       </div>
-    </PublicLayout>
+    </MarketplaceLayout>
   );
 }
