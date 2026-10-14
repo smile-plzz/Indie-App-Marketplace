@@ -1,0 +1,60 @@
+.section {
+  padding: var(--section-pad) var(--gutter);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.last {
+  border-bottom: 0;
+  padding-bottom: 72px;
+}
+
+.rail {
+  display: grid;
+  grid-template-columns: var(--rail-w) 1fr;
+  gap: var(--rail-gap);
+}
+
+.railLabel {
+  min-width: 0;
+}
+
+.railBody {
+  min-width: 0;
+}
+
+.fullHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+/* The rail collapses to a stacked block with the kicker above. */
+@media (max-width: 1023px) {
+  .section {
+    padding: 40px 32px;
+  }
+
+  .rail {
+    display: block;
+  }
+
+  .railLabel:not(:empty) {
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 639px) {
+  .section {
+    padding: 28px 20px;
+  }
+
+  .last {
+    padding-bottom: 40px;
+  }
+
+  .fullHeader {
+    margin-bottom: 16px;
+  }
+}

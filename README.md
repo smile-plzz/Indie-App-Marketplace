@@ -23,6 +23,50 @@ The marketplace is for my own apps only. It is not a multi-vendor platform.
 
 ---
 
+## 1.1 Quickstart, Setup & Usage
+
+### Prerequisites
+- Node.js 18+ (tested on Node.js 22+)
+- npm 9+
+
+### Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/smile-plzz/Indie-App-Marketplace.git
+   cd Indie-App-Marketplace
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Copy environment configuration:
+   ```bash
+   cp .env.example .env.local
+   ```
+   (Out of the box, zero-config SQLite and sandbox payment gateways are enabled for instant local testing).
+
+### Usage & Running
+- **Start development server:**
+  ```bash
+  npm run dev
+  ```
+  Open [http://localhost:3000](http://localhost:3000) for the portfolio and [http://localhost:3000/store](http://localhost:3000/store) for the app marketplace.
+- **Run automated test suite:**
+  ```bash
+  npm test
+  ```
+- **Typecheck & Lint:**
+  ```bash
+  npm run typecheck
+  npm run lint
+  ```
+- **Build for production:**
+  ```bash
+  npm run build
+  ```
+
+---
+
 ## 2. Context
 
 ### 2.1 The situation

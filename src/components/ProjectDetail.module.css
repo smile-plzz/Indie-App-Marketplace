@@ -1,0 +1,232 @@
+.topbar {
+  padding: 48px var(--gutter) 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.header {
+  padding: 32px var(--gutter) 40px;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 56px;
+  align-items: end;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.title {
+  font-size: 56px;
+  margin: 16px 0 14px;
+  letter-spacing: -0.02em;
+}
+
+.summary {
+  font-size: 19px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 44ch;
+  color: var(--color-neutral-800);
+}
+
+.facts {
+  font-size: 13px;
+  line-height: 2;
+  color: var(--color-neutral-700);
+}
+
+.factRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.factValue {
+  color: var(--color-text);
+}
+
+.hero {
+  margin: 40px var(--gutter);
+}
+
+.writeup {
+  padding: 0 var(--gutter) 64px;
+  display: grid;
+  grid-template-columns: var(--rail-w) 1fr;
+  gap: var(--rail-gap);
+}
+
+.writeupRail {
+  position: sticky;
+  top: 24px;
+  align-self: start;
+}
+
+.writeupBody {
+  max-width: 66ch;
+}
+
+.sectionLabel {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.prevnext {
+  border-top: 1px solid var(--color-divider);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.prev,
+.next {
+  border: 0;
+  padding: 28px var(--gutter);
+  flex-direction: column;
+  gap: 6px;
+}
+
+.prev {
+  align-items: flex-start;
+}
+
+.next {
+  border-left: 1px solid var(--color-divider);
+  align-items: flex-end;
+  text-align: right;
+}
+
+.neighbourTitle {
+  font-family: var(--font-heading);
+  font-size: 23px;
+}
+
+@media (max-width: 1023px) {
+  .topbar {
+    padding: 32px 32px 0;
+  }
+
+  .header {
+    padding: 24px 32px 32px;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .title {
+    font-size: 40px;
+  }
+
+  .hero {
+    margin: 28px 32px;
+  }
+
+  .writeup {
+    padding: 0 32px 48px;
+    display: block;
+  }
+
+  .writeupRail {
+    position: static;
+    margin-bottom: 16px;
+  }
+
+  .prev,
+  .next {
+    padding: 24px 32px;
+  }
+}
+
+@media (max-width: 639px) {
+  .topbar {
+    padding: 24px 20px 0;
+  }
+
+  .header {
+    padding: 20px 20px 28px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .summary {
+    font-size: 16px;
+  }
+
+  .hero {
+    margin: 24px 20px;
+  }
+
+  .writeup {
+    padding: 0 20px 32px;
+  }
+
+  .prevnext {
+    grid-template-columns: 1fr;
+  }
+
+  .prev,
+  .next {
+    padding: 20px;
+  }
+
+  .next {
+    border-left: 0;
+    border-top: 1px solid var(--color-divider);
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* Dense: the studio preview pane. The layout is unchanged  -  only the page
+   gutters and the write-up rail collapse, because the pane supplies its own
+   padding and is far narrower than a page. */
+.dense {
+  --gutter: 0px;
+}
+
+.dense .header,
+.dense .writeup {
+  display: block;
+}
+
+.dense .header {
+  padding-bottom: 24px;
+}
+
+.dense .title {
+  font-size: 34px;
+  margin: 10px 0 10px;
+}
+
+.dense .summary {
+  font-size: 16px;
+}
+
+.dense .facts {
+  margin-top: 18px;
+}
+
+.dense .hero {
+  margin: 24px 0;
+}
+
+.dense .writeup {
+  padding-bottom: 0;
+}
+
+.dense .writeupRail {
+  position: static;
+  margin-bottom: 12px;
+}
+
+.dense .sectionLabel {
+  font-size: 13px;
+}
+
+.dense :global(.lead) {
+  font-size: 15px;
+}

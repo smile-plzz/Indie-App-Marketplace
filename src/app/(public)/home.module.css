@@ -1,0 +1,192 @@
+.hero {
+  padding: 104px var(--gutter) 72px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.heroTitle {
+  font-size: 60px;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  margin: 20px 0 0;
+  max-width: 15ch;
+}
+
+.heroActions {
+  display: flex;
+  gap: 14px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 40px;
+  margin-top: 32px;
+  border-top: 1px solid var(--color-divider);
+  padding-top: 24px;
+}
+
+.tagRow {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+/* Deliberately unequal image heights let the eye rank the work. */
+.selfStart {
+  align-self: start;
+}
+
+.experience {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.roleHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.bullets {
+  padding-left: 18px;
+  font-size: 15px;
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--color-neutral-800);
+  margin: 0;
+}
+
+.filmGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.thumbGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.metrics {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.metricRow {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.metricValue {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 1.1;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 48px;
+}
+
+.contactDetails {
+  font-size: 14px;
+  line-height: 2;
+  color: var(--color-neutral-800);
+  border-left: 1px solid var(--color-divider);
+  padding-left: 28px;
+}
+
+.footer {
+  padding: 24px var(--gutter);
+  border-top: 1px solid var(--color-divider);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--color-meta);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1023px) {
+  .hero {
+    padding: 44px 32px 40px;
+  }
+
+  .heroTitle {
+    font-size: 42px;
+  }
+
+  .projectGrid,
+  .filmGrid,
+  .contactGrid,
+  .skills {
+    grid-template-columns: 1fr;
+  }
+
+  .contactDetails {
+    border-left: 0;
+    border-top: 1px solid var(--color-divider);
+    padding-left: 0;
+    padding-top: 20px;
+  }
+
+  .footer {
+    padding: 24px 32px;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero {
+    padding: 44px 20px 32px;
+  }
+
+  .heroTitle {
+    font-size: 34px;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin-top: 14px;
+  }
+
+  .heroActions {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 26px;
+  }
+
+  .heroActions .btn {
+    min-height: 48px;
+    width: 100%;
+  }
+
+  .projectGrid {
+    gap: 18px;
+  }
+
+  .metricRow {
+    gap: 28px;
+  }
+
+  .footer {
+    padding: 20px;
+  }
+}

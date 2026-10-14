@@ -1,0 +1,91 @@
+.head {
+  padding: var(--section-pad) var(--gutter) 0;
+}
+
+.title {
+  font-size: 44px;
+  margin: 14px 0 24px;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--color-divider);
+  padding-bottom: 24px;
+}
+
+/* CSS Grid with varied authored heights lets the eye rank the work. */
+.masonry {
+  padding: 32px var(--gutter) 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.item {
+  break-inside: auto;
+}
+
+.empty {
+  margin: 32px var(--gutter) 64px;
+  border: 1px dashed var(--color-divider);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  padding: 48px 32px;
+}
+
+@media (max-width: 1023px) {
+  .head {
+    padding: 40px 32px 0;
+  }
+
+  .title {
+    font-size: 34px;
+  }
+
+  .masonry {
+    padding: 28px 32px 48px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .empty {
+    margin: 28px 32px 48px;
+  }
+}
+
+@media (max-width: 639px) {
+  .head {
+    padding: 32px 20px 0;
+  }
+
+  .title {
+    font-size: 30px;
+    margin: 12px 0 18px;
+  }
+
+  /* Chips scroll horizontally rather than wrapping into a wall. */
+  .filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 14px;
+  }
+
+  .masonry {
+    padding: 8px 20px 32px;
+    grid-template-columns: 1fr;
+  }
+
+  .item {
+    margin-bottom: 0;
+  }
+
+  .empty {
+    margin: 20px 20px 32px;
+    padding: 32px 20px;
+  }
+}
