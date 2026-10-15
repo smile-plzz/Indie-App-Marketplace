@@ -13,7 +13,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: absolute("/terms-of-sale"), priority: 0.6 },
     { url: absolute("/privacy-policy"), priority: 0.6 },
     { url: absolute("/contact"), priority: 0.6 },
-    { url: absolute("/store/orders"), priority: 0.5 },
+    { url: absolute("/about"), priority: 0.6 },
+    { url: absolute("/projects"), priority: 0.7 },
+    { url: absolute("/writing"), priority: 0.6 },
   ];
 
   for (const product of products) {

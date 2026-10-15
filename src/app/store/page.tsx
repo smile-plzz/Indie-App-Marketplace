@@ -4,32 +4,27 @@ import { getAllProducts } from "@/lib/marketplace/catalog";
 import { StoreCatalog } from "@/components/store/StoreCatalog";
 import styles from "@/components/store/store.module.css";
 import Link from "next/link";
-
 export const metadata: Metadata = {
-  title: "App Store: Independent Windows Tools by Ismail",
-  description:
-    "Open-source Windows utilities and applications. Source is free on GitHub; convenient, signed, auto-updating installers are available for a small fee.",
+    title: "App Store: Independent Windows Tools by Ismail",
+    description: "Open-source Windows utilities and applications. Source is free on GitHub; convenient, ready-to-run downloads are available for a small fee.",
 };
-
 export default async function StorePage() {
-  const products = await getAllProducts();
-
-  return (
-    <MarketplaceLayout>
+    const products = await getAllProducts();
+    return (<MarketplaceLayout>
       <div className={styles.container}>
         <div className={styles.hero}>
           <div className={styles.kicker}>Indie App Marketplace</div>
-          <h1 className={styles.title}>Open-Source Windows Apps, Ready to Run</h1>
+          <h1 className={styles.title}>A few good apps for Windows.</h1>
           <p className={styles.subtitle}>
-            I build useful, privacy-first desktop tools and publish the code on GitHub. If you want the convenience of a verified, code-signed installer with updates and email support, you can purchase it below for a small fee.
+            Independent tools by Ismail. Explore each app, review its source, and choose the download that works for you.
           </p>
 
           <div className={styles.ethosCallout}>
-            <strong>Open-Source Transparency:</strong> Every app listed here has its complete source code available on GitHub for free under MIT or Apache-2.0. You are paying for the convenience of pre-built, signed binaries and verified checksums, not for code lock-in.
+            <strong>Open-Source Transparency:</strong> Source code is available on GitHub under the listed license. The purchase covers a convenient prepared download.
           </div>
         </div>
 
-        <StoreCatalog products={products} />
+        <StoreCatalog products={products}/>
 
         <div style={{ marginTop: "64px", paddingTop: "24px", borderTop: "1px solid var(--color-divider)", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "16px", fontSize: "13px", color: "var(--color-meta)" }}>
           <div>
@@ -46,6 +41,5 @@ export default async function StorePage() {
           </div>
         </div>
       </div>
-    </MarketplaceLayout>
-  );
+    </MarketplaceLayout>);
 }

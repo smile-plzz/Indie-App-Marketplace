@@ -26,7 +26,7 @@ The marketplace is for my own apps only. It is not a multi-vendor platform.
 ## 1.1 Quickstart, Setup & Usage
 
 ### Prerequisites
-- Node.js 18+ (tested on Node.js 22+)
+- Node.js 22.14+ (required for development SQLite)
 - npm 9+
 
 ### Setup
@@ -43,7 +43,7 @@ The marketplace is for my own apps only. It is not a multi-vendor platform.
    ```bash
    cp .env.example .env.local
    ```
-   (Out of the box, zero-config SQLite and sandbox payment gateways are enabled for instant local testing).
+   (For a complete local demo, run `npm run setup:demo`. It creates local secrets and a clearly labeled text download fixture. Content editing requires Sanity. Production requires PostgreSQL and configured private storage/email.)
 
 ### Usage & Running
 - **Start development server:**
@@ -457,3 +457,8 @@ Order of work inside each milestone: schema and interfaces, tests, implementatio
 - **Code signing:** a digital signature on an installer that proves who published it and that it was not altered.
 - **Reconciliation:** comparing my order records with the gateway's records to catch mismatches.
 - **DBID:** Digital Business Identification number issued in Bangladesh for online businesses.
+
+
+## Build operations
+
+See [docs/OPERATIONS.md](docs/OPERATIONS.md) for the implemented admin screens, local demo setup, production configuration, verification and launch acceptance boundaries. Product intent and milestone requirements above remain authoritative. Real merchant approval, service credentials and signed app artifacts are required before launch.

@@ -15,7 +15,13 @@ export async function middleware(request: NextRequest) {
   }
 
   const token = request.cookies.get(SESSION_COOKIE)?.value;
-  if (await verifySession(token)) return NextResponse.next();
+  if (await verifySession(token)) {
+    if (pathname.startsWith("/api/admin") && !["GET", "HEAD", "OPTIONS"].includes(request.method)) {
+      const origin = request.headers.get("origin");
+      if (origin !== request.nextUrl.origin) return NextResponse.json({ error: "Invalid origin" }, { status: 403 });
+    }
+    return NextResponse.next();
+  }
 
   if (pathname.startsWith("/api/admin")) {
     return NextResponse.json({ error: "Not authorised" }, { status: 401 });

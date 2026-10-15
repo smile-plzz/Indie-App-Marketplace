@@ -1,99 +1,95 @@
-name: Release Windows App
-
+# Call this workflow from an app repository after its own tests, packaging and signing job.
+# The upstream job uploads a signed installer using actions/upload-artifact.
+name: Publish verified Windows installer
 on:
-  push:
-    tags:
-      - "v*.*.*"
-
+  workflow_call:
+    inputs:
+      slug:
+        required: true
+        type: string
+      version:
+        required: true
+        type: string
+      artifact-name:
+        required: true
+        type: string
+      installer-name:
+        required: true
+        type: string
+    secrets:
+      STORE_API_URL:
+        required: true
+      RELEASE_PUBLISH_SECRET:
+        required: true
+      STORAGE_ENDPOINT:
+        required: true
+      STORAGE_BUCKET:
+        required: true
+      AWS_ACCESS_KEY_ID:
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+        required: true
+permissions:
+  contents: write
 jobs:
-  build-and-publish:
-    name: Build, Sign, and Publish Release
+  publish:
     runs-on: windows-latest
-    permissions:
-      contents: write
-
+    environment: release
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/download-artifact@v4
         with:
-          node-version: 22
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run automated test suite
-        run: npm test
-
-      - name: Compile and package release
+          name: ${{ inputs.artifact-name }}
+          path: installer
+      - name: Verify installer signature and malware scan
         shell: pwsh
+        env:
+          INSTALLER_NAME: ${{ inputs.installer-name }}
+          APP_SLUG: ${{ inputs.slug }}
+          RELEASE_VERSION: ${{ inputs.version }}
         run: |
-          $tag = "${{ github.ref_name }}"
-          $appSlug = "${{ github.event.repository.name }}".ToLower()
-          $distDir = "dist"
-          if (!(Test-Path $distDir)) { New-Item -ItemType Directory -Path $distDir }
-
-          $installerName = "$appSlug-$tag-Setup.exe"
-          $installerPath = "$distDir\$installerName"
-
-          # Placeholder for the actual packaging command (e.g. InnoSetup, WiX, or electron-builder)
-          if (!(Test-Path $installerPath)) {
-            "MZ binary package for $appSlug $tag" | Out-File -FilePath $installerPath -Encoding utf8
-          }
-
-          $hash = (Get-FileHash $installerPath -Algorithm SHA256).Hash.ToLower()
-          "$hash *$installerName" | Out-File -FilePath "$distDir\SHA256SUMS.txt" -Encoding ascii
-
-          echo "INSTALLER_PATH=$installerPath" >> $env:GITHUB_ENV
-          echo "INSTALLER_NAME=$installerName" >> $env:GITHUB_ENV
-          echo "SHA256_HASH=$hash" >> $env:GITHUB_ENV
-          echo "APP_SLUG=$appSlug" >> $env:GITHUB_ENV
-          echo "RELEASE_VERSION=$tag" >> $env:GITHUB_ENV
-
-      - name: Code sign installer (if certificate configured)
+          if ($env:INSTALLER_NAME -notmatch '^[a-zA-Z0-9._-]+\.exe$') { throw 'Invalid installer filename' }
+          if ($env:APP_SLUG -notmatch '^[a-z0-9-]+$') { throw 'Invalid app slug' }
+          if ($env:RELEASE_VERSION -notmatch '^v?\d+\.\d+\.\d+(-[a-zA-Z0-9.-]+)?$') { throw 'Invalid version' }
+          $path = Join-Path 'installer' $env:INSTALLER_NAME
+          if (!(Test-Path -LiteralPath $path)) { throw 'Actual packaged installer required' }
+          if ((Get-AuthenticodeSignature -LiteralPath $path).Status -ne 'Valid') { throw 'Installer must have a valid trusted signature' }
+          Update-MpSignature -ErrorAction Stop
+          Start-MpScan -ScanType CustomScan -ScanPath (Resolve-Path $path) -ErrorAction Stop
+          $detections = @(Get-MpThreatDetection | Where-Object { $_.Resources -match [regex]::Escape($env:INSTALLER_NAME) })
+          if ($detections.Count -gt 0) { throw 'Malware scanner detected a threat' }
+          $hash = (Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash.ToLower()
+          "$hash *$env:INSTALLER_NAME" | Set-Content installer/SHA256SUMS.txt -Encoding ascii
+          "SHA256_HASH=$hash" >> $env:GITHUB_ENV
+      - name: Upload to private object storage
         shell: pwsh
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+          STORAGE_ENDPOINT: ${{ secrets.STORAGE_ENDPOINT }}
+          STORAGE_BUCKET: ${{ secrets.STORAGE_BUCKET }}
+          APP_SLUG: ${{ inputs.slug }}
+          RELEASE_VERSION: ${{ inputs.version }}
+          INSTALLER_NAME: ${{ inputs.installer-name }}
         run: |
-          if ("${{ secrets.CODE_SIGNING_CERT }}" -ne "") {
-            Write-Host "Signing installer with signtool..."
-            # signtool sign /f cert.pfx /p "${{ secrets.CODE_SIGNING_PASSWORD }}" /tr http://timestamp.digicert.com /td sha256 /fd sha256 "${{ env.INSTALLER_PATH }}"
-          } else {
-            Write-Host "No code signing certificate secret found; skipping signing for test build."
-          }
-
-      - name: Create GitHub Release (Free Route)
-        uses: softprops/action-gh-release@v2
+          $key = "releases/$env:APP_SLUG/$env:RELEASE_VERSION/$env:INSTALLER_NAME"
+          aws s3 cp "installer/$env:INSTALLER_NAME" "s3://$env:STORAGE_BUCKET/$key" --endpoint-url $env:STORAGE_ENDPOINT --acl private
+          if ($LASTEXITCODE -ne 0) { throw 'Private storage upload failed' }
+          "FILE_KEY=$key" >> $env:GITHUB_ENV
+      - uses: softprops/action-gh-release@v2
         with:
-          files: |
-            ${{ env.INSTALLER_PATH }}
-            dist/SHA256SUMS.txt
+          tag_name: ${{ inputs.version }}
+          files: installer/*
           generate_release_notes: true
-          draft: false
-          prerelease: false
-
-      - name: Register release with Indie App Marketplace
+          fail_on_unmatched_files: true
+      - name: Register release in CMS
         shell: pwsh
+        env:
+          STORE_API_URL: ${{ secrets.STORE_API_URL }}
+          STORE_SECRET: ${{ secrets.RELEASE_PUBLISH_SECRET }}
+          APP_SLUG: ${{ inputs.slug }}
+          RELEASE_VERSION: ${{ inputs.version }}
         run: |
-          $storeUrl = "${{ secrets.STORE_API_URL }}"
-          $storeSecret = "${{ secrets.RELEASE_PUBLISH_SECRET }}"
-
-          if ($storeUrl -ne "" -and $storeSecret -ne "") {
-            Write-Host "Publishing release metadata to Indie App Marketplace..."
-            $body = @{
-              slug = "${{ env.APP_SLUG }}"
-              version = "${{ env.RELEASE_VERSION }}"
-              checksum = "${{ env.SHA256_HASH }}"
-              fileKey = "releases/${{ env.APP_SLUG }}/${{ env.INSTALLER_NAME }}"
-            } | ConvertTo-Json
-
-            $headers = @{
-              "Authorization" = "Bearer $storeSecret"
-              "Content-Type" = "application/json"
-            }
-
-            Invoke-RestMethod -Uri "$storeUrl/api/releases/publish" -Method Post -Headers $headers -Body $body
-            Write-Host "Release successfully registered on store."
-          } else {
-            Write-Host "Store URL or secret not configured in repository secrets; skipping publish webhook."
-          }
+          if ($env:STORE_API_URL -notmatch '^https://') { throw 'HTTPS store URL required' }
+          $body = @{ slug = $env:APP_SLUG; version = $env:RELEASE_VERSION; checksum = $env:SHA256_HASH; fileKey = $env:FILE_KEY; isSigned = $true; malwareScanPassed = $true } | ConvertTo-Json
+          Invoke-RestMethod -Uri "$env:STORE_API_URL/api/releases/publish" -Method Post -Headers @{ Authorization = "Bearer $env:STORE_SECRET" } -ContentType application/json -Body $body

@@ -390,3 +390,9 @@
     font-size: 26px;
   }
 }
+
+.rail { background: var(--color-bg); padding: 32px 16px; }
+.content { max-width: 1500px; padding-top: 44px; }
+.brandName { font-size: 28px; letter-spacing: -.04em; }
+.pageTitle { font-size: 40px; letter-spacing: -.04em; }
+@media(max-width:900px) { .content { padding: 28px 20px; } .rail { padding: 12px; } }

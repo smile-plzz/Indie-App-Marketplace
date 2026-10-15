@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import styles from "./admin.module.css";
 
 export type AdminNavItem = { label: string; href: string; count?: number };
 

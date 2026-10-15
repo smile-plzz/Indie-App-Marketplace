@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { getPosts, getSettings } from "@/lib/content";
+import { getSettings } from "@/lib/content";
 import { navItems, SOCIALS } from "./nav";
 import { MobileDrawer } from "./MobileDrawer";
 import { SidebarNav } from "./SidebarNav";

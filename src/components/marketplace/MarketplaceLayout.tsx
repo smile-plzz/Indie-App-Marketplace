@@ -2,10 +2,10 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import styles from "./MarketplaceLayout.module.css";
-
-export function MarketplaceLayout({ children }: { children: ReactNode }) {
-  return (
-    <div className={styles.shell}>
+export function MarketplaceLayout({ children }: {
+    children: ReactNode;
+}) {
+    return (<div className={styles.shell}>
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <Link href="/" className={styles.brand}>
@@ -29,6 +29,7 @@ export function MarketplaceLayout({ children }: { children: ReactNode }) {
             <Link href="/store/orders" className={styles.navLink}>
               Lookup Orders
             </Link>
+            <Link href="/about" className={styles.navLink}>Portfolio</Link>
             <Link href="/contact" className={styles.navLink}>
               Support
             </Link>
@@ -50,7 +51,7 @@ export function MarketplaceLayout({ children }: { children: ReactNode }) {
               <strong style={{ fontSize: "16px", color: "var(--color-text)" }}>Indie App Marketplace</strong>
             </div>
             <p style={{ fontSize: "13px", lineHeight: "1.6", color: "var(--color-meta)", margin: "0 0 16px" }}>
-              A personal software showcase and storefront for open-source Windows tools. All source code remains 100% free on GitHub. The store sells convenient, ready-to-run, verified installers with automatic updates and email support.
+              A personal software showcase and storefront for open-source Windows tools. Explore the source on GitHub, or choose a convenient prepared download.
             </p>
             <div style={{ fontSize: "12px", color: "var(--color-accent-prose)" }}>
               Built by Ismail Hossain (smile-plzz)
@@ -60,11 +61,7 @@ export function MarketplaceLayout({ children }: { children: ReactNode }) {
           <div className={styles.footerCol}>
             <h4>Applications</h4>
             <ul>
-              <li><Link href="/store/localflix">LocalFlix</Link></li>
-              <li><Link href="/store/hdd-cache-warmer">HDDCacheWarmer</Link></li>
-              <li><Link href="/store/safe-gaming-optimizer">Safe-Gaming-Optimizer</Link></li>
-              <li><Link href="/store/photo-management-app">PhotoManagementApp</Link></li>
-              <li><Link href="/store/dedupe-light">dedupe-light</Link></li>
+              <li><Link href="/store">Browse all apps</Link></li>
             </ul>
           </div>
 
@@ -95,13 +92,12 @@ export function MarketplaceLayout({ children }: { children: ReactNode }) {
 
         <div className={styles.footerBottom}>
           <div>
-            © {new Date().getFullYear()} Indie App Marketplace. All software source code is open source under MIT or Apache-2.0.
+            © {new Date().getFullYear()} Indie App Marketplace. See each app for its source and license.
           </div>
           <div>
             Operating with transparent pricing in BDT and USD.
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>);
 }

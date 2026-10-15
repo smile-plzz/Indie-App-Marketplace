@@ -155,9 +155,10 @@
 }
 
 @media (max-width: 860px) {
-  .nav {
-    display: none;
-  }
+  .headerInner { flex-wrap: wrap; }
+  .nav { display: flex; order: 3; width: 100%; overflow-x: auto; padding: 8px 0; gap: 22px; }
+  .navLink { white-space: nowrap; flex-shrink: 0; }
+  .brandName { font-size: 18px; }
   .footerInner {
     grid-template-columns: 1fr 1fr;
   }
@@ -168,3 +169,5 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media(min-width:861px) { .nav { gap:16px; } .navLink { font-size:12px; white-space:nowrap; } .brandName { font-size:19px; } }
