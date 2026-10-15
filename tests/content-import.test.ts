@@ -48,12 +48,13 @@ test('Content import is repeatable and preserves owner edits', async () => {
 test('Existing product slugs keep their owner records and review history', async () => {
   const source = preparedDocuments.find(doc => doc._type === 'product')!;
   const { client, records } = memoryClient([{ ...source, _id: 'owner-product', title: 'Custom title' },
-    { _id: 'owner-settings', _type: 'siteSettings', role: 'My role', about: ['My biography'], links: { github: 'https://github.com/smile-plzz' } }]);
+    { _id: 'owner-settings', _type: 'siteSettings', role: 'My role', about: ['My biography'], links: { github: 'https://github.com/smile-plzz', medium: 'https://medium.com/@owner-edited' } }]);
   const result = await importPreparedContent(client);
   assert.equal(result.verifiedRecords, result.expectedRecords);
   assert.equal(records.has(source._id), false);
   assert.equal(records.get('owner-product')?.title, 'Custom title');
   assert.equal(records.get('owner-settings')?.role, 'My role');
   assert.deepEqual(records.get('owner-settings')?.about, ['My biography']);
+  assert.equal((records.get('owner-settings')?.links as { medium: string }).medium, 'https://medium.com/@owner-edited');
   assert.equal([...records.values()].some(doc => (doc.product as { _ref?: string })?._ref === 'owner-product'), false);
 });

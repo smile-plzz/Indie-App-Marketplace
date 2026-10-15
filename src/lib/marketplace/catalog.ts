@@ -1,5 +1,6 @@
-import { client } from "@/lib/sanity";
+import { publishedReadClient } from "@/lib/sanity";
 import type { MarketplaceProduct } from "./types";
+const client = publishedReadClient();
 // This sample exercises checkout locally. It is never a production listing.
 export const BUILTIN_PRODUCTS: MarketplaceProduct[] = [{
         id: "prod_localflix", slug: "localflix", title: "Demo app", tagline: "Try the sandbox purchase flow.",

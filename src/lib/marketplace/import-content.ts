@@ -49,18 +49,24 @@ export async function importPreparedContent(client: SanityClient) {
     created++;
   }
   const settings = existing.find(doc => doc._type === "siteSettings");
+  let profileUpdated = false;
   if (!settings) {
     transaction.createIfNotExists({ _id: "siteSettings", _type: "siteSettings", ...siteSettings, ...profileFields,
       links: { ...siteSettings.links, ...profileFields.links } });
     created++;
+    profileUpdated = true;
   } else {
     // Replace only known scaffold copy. Preserve authored profile text and all other settings.
-    const updates: Record<string, unknown> = { "links.medium": profileFields.links.medium };
+    const updates: Record<string, unknown> = {};
+    if (!(settings.links as { medium?: string } | undefined)?.medium) updates["links.medium"] = profileFields.links.medium;
     if (settings.positioning === siteSettings.positioning || !settings.positioning) updates.positioning = profileFields.positioning;
     if (settings.role === siteSettings.role || !settings.role) updates.role = profileFields.role;
     if (JSON.stringify(settings.about) === JSON.stringify(siteSettings.about) || !settings.about) updates.about = profileFields.about;
     if (settings.contactHeadline === siteSettings.contactHeadline || !settings.contactHeadline) updates.contactHeadline = profileFields.contactHeadline;
-    transaction.patch(settings._id, { set: updates });
+    if (Object.keys(updates).length) {
+      transaction.patch(settings._id, { set: updates });
+      profileUpdated = true;
+    }
   }
   await transaction.commit();
   const saved = await client.fetch<Array<{ _id: string; _type: string }>>(`*[_id in $ids]{_id,_type}`, {
@@ -68,5 +74,5 @@ export async function importPreparedContent(client: SanityClient) {
   });
   if (saved.length !== expectedIds.size) throw new Error("Some imported records could not be verified. Retry safely to check existing records.");
   return { created, preserved, verifiedRecords: saved.length, expectedRecords: expectedIds.size,
-    profileUpdated: true, summary: importSummary() };
+    profileUpdated, summary: importSummary() };
 }

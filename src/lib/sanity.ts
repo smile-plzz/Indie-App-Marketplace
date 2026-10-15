@@ -23,6 +23,13 @@ export const client: SanityClient | null = sanityConfigured
     })
   : null;
 
+/** Server data loaders may read namespaced records; publication filters still apply. */
+export function publishedReadClient(): SanityClient | null {
+  if (!client) return null;
+  return client.withConfig({ token: process.env.SANITY_API_WRITE_TOKEN || undefined,
+    useCdn: false, perspective: "published" });
+}
+
 /** Writes require the token; only ever constructed server-side. */
 export function writeClient(): SanityClient {
   const token = process.env.SANITY_API_WRITE_TOKEN;
