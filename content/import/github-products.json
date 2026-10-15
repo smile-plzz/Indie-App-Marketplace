@@ -1,0 +1,970 @@
+[
+  {
+    "_id": "product.github.ibackup",
+    "_type": "product",
+    "title": "iBackup",
+    "slug": {
+      "current": "ibackup",
+      "_type": "slug"
+    },
+    "tagline": "Your memories, on your own drive.",
+    "summary": "Copy locally available iPhone and iPad photos and videos to ordinary folders on your Windows PC over USB. Incremental tracking skips files already recorded in your backup manifest.",
+    "description": "Copy locally available iPhone and iPad photos and videos to ordinary folders on your Windows PC over USB. Incremental tracking skips files already recorded in your backup manifest.",
+    "category": "System Utilities",
+    "priceUSD": 200,
+    "priceBDT": 24690,
+    "status": "draft",
+    "featured": false,
+    "repoUrl": "https://github.com/smile-plzz/iBackup",
+    "license": "Not specified",
+    "minOS": "Windows 10 1809+ or Windows 11, x64",
+    "systemRequirements": [
+      "Windows 10 1809+ or Windows 11, x64",
+      "Apple Devices or iTunes installed for USB drivers",
+      "Unlocked iPhone or iPad with Trust This Computer accepted",
+      "Extract the complete portable ZIP before running iBackup.exe"
+    ],
+    "features": [
+      {
+        "title": "USB photo and video copying with scan and transfer progress",
+        "_key": "feature-0",
+        "description": "USB photo and video copying with scan and transfer progress"
+      },
+      {
+        "title": "Year and month folders with collision-safe filenames",
+        "_key": "feature-1",
+        "description": "Year and month folders with collision-safe filenames"
+      },
+      {
+        "title": "Incremental local manifest and destination SHA-256 recording",
+        "_key": "feature-2",
+        "description": "Incremental local manifest and destination SHA-256 recording"
+      },
+      {
+        "title": "Backup history and local diagnostic logs",
+        "_key": "feature-3",
+        "description": "Backup history and local diagnostic logs"
+      },
+      {
+        "title": "No account, upload, or telemetry",
+        "_key": "feature-4",
+        "description": "No account, upload, or telemetry"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can I get the source code for free?",
+        "_key": "source",
+        "answer": "Yes. The repository is available at https://github.com/smile-plzz/iBackup. Check its license before reusing or redistributing code."
+      },
+      {
+        "question": "Can I buy a signed build now?",
+        "_key": "availability",
+        "answer": "The planned convenience-build price is US$2 or BDT 246.90. Checkout remains unavailable while the signed package, malware scan and release reviews are pending. Any existing GitHub preview is a separate unsigned download."
+      },
+      {
+        "question": "What do I need to run it?",
+        "_key": "requirements",
+        "answer": "Windows 10 1809+ or Windows 11, x64 Apple Devices or iTunes installed for USB drivers Unlocked iPhone or iPad with Trust This Computer accepted Extract the complete portable ZIP before running iBackup.exe"
+      },
+      {
+        "question": "What should I know before using it?",
+        "_key": "limitations",
+        "answer": "Unsigned preview; Windows may show SmartScreen Media backup only, not a full iPhone restore backup iCloud-only originals may not be accessible Destination SHA-256 is recorded, not independently compared with source Historical manifest entries do not re-check moved or deleted destination files"
+      }
+    ],
+    "installerFileKey": "",
+    "sha256Checksum": "",
+    "currentVersion": "v0.1.4",
+    "limitations": [
+      "Unsigned preview; Windows may show SmartScreen",
+      "Media backup only, not a full iPhone restore backup",
+      "iCloud-only originals may not be accessible",
+      "Destination SHA-256 is recorded, not independently compared with source",
+      "Historical manifest entries do not re-check moved or deleted destination files"
+    ],
+    "sourceReadmeURL": "https://github.com/smile-plzz/iBackup/blob/main/README.md",
+    "sourceCommit": "57bd33d6dcc8a9a134e6d60665f6ffd478dd4168",
+    "sourceEvidenceURLs": [
+      "https://github.com/smile-plzz/iBackup/blob/main/README.md",
+      "https://github.com/smile-plzz/iBackup/tree/57bd33d6dcc8a9a134e6d60665f6ffd478dd4168"
+    ],
+    "contentReviewedAt": "2026-10-15"
+  },
+  {
+    "_id": "license.github.ibackup",
+    "_type": "licenseRecord",
+    "product": {
+      "_ref": "product.github.ibackup",
+      "_type": "reference"
+    },
+    "licenseType": "Not specified",
+    "licenseApproved": false,
+    "gplComplianceChecked": false,
+    "dependencyReviewCompleted": false,
+    "contentLegalityChecked": false,
+    "safetyReviewCompleted": false,
+    "trademarkReviewCompleted": false,
+    "notes": "Pending review. Repository license: Not specified. Public repository visibility does not itself grant redistribution rights. Review direct and transitive dependencies, bundled binaries, provider terms, content and trademarks before paid distribution. Source: https://github.com/smile-plzz/iBackup/blob/main/README.md at 57bd33d6dcc8a9a134e6d60665f6ffd478dd4168."
+  },
+  {
+    "_id": "release.github.ibackup.v0.1.4",
+    "_type": "release",
+    "product": {
+      "_ref": "product.github.ibackup",
+      "_type": "reference"
+    },
+    "version": "v0.1.4",
+    "releaseDate": "2026-10-14",
+    "changelog": "iBackup v0.1.4 unsigned portable GitHub release candidate. Local staging SHA-256 matches published metadata. Signing, malware scan and distribution reviews are pending; this candidate is not available through paid checkout.",
+    "installerFileKey": "",
+    "sha256Checksum": "2f6ca28e714be78a8e96f026942e4c5b9e201b28121fb26a9a91dbda49712ad0",
+    "isSigned": false,
+    "malwareScanPassed": false,
+    "installerSize": "91081159 bytes",
+    "minOS": "Windows 10 1809+ or Windows 11, x64",
+    "isLatest": false,
+    "sourceReleaseURL": "https://github.com/smile-plzz/iBackup/releases/tag/v0.1.4",
+    "sourceArtifactURL": "https://github.com/smile-plzz/iBackup/releases/download/v0.1.4/iBackup-win-x64.zip",
+    "sourceCommit": "57bd33d6dcc8a9a134e6d60665f6ffd478dd4168",
+    "releaseStatus": "candidate"
+  },
+  {
+    "_id": "product.github.luma",
+    "_type": "product",
+    "title": "Luma",
+    "slug": {
+      "current": "luma",
+      "_type": "slug"
+    },
+    "tagline": "Your photos and videos, beautifully organized.",
+    "summary": "A native Windows media library for the folders and drives you already own. Browse a local gallery, organize favorites, tags and albums, and revisit cached previews when a drive is disconnected.",
+    "description": "A native Windows media library for the folders and drives you already own. Browse a local gallery, organize favorites, tags and albums, and revisit cached previews when a drive is disconnected.",
+    "category": "Media & Video",
+    "priceUSD": 200,
+    "priceBDT": 24690,
+    "status": "draft",
+    "featured": false,
+    "repoUrl": "https://github.com/smile-plzz/Luma",
+    "license": "Not specified",
+    "minOS": "Windows 10 2004+ or Windows 11, x64",
+    "systemRequirements": [
+      "Windows 10 2004+ or Windows 11, x64",
+      "Extract the complete ZIP to a writable folder",
+      "Run Luma.App.exe with all bundled files beside it",
+      "Installed Windows codecs determine real-format preview support"
+    ],
+    "features": [
+      {
+        "title": "Virtualized gallery with date groups, search, filters and month navigation",
+        "_key": "feature-0",
+        "description": "Virtualized gallery with date groups, search, filters and month navigation"
+      },
+      {
+        "title": "Favorites, tags, virtual albums and On this day memories",
+        "_key": "feature-1",
+        "description": "Favorites, tags, virtual albums and On this day memories"
+      },
+      {
+        "title": "Resumable indexing and local SQLite catalog",
+        "_key": "feature-2",
+        "description": "Resumable indexing and local SQLite catalog"
+      },
+      {
+        "title": "Offline previews with repair, rebuild and cache controls",
+        "_key": "feature-3",
+        "description": "Offline previews with repair, rebuild and cache controls"
+      },
+      {
+        "title": "Source, folder and file-type exclusions",
+        "_key": "feature-4",
+        "description": "Source, folder and file-type exclusions"
+      },
+      {
+        "title": "Remembered browsing position and light/dark/system themes",
+        "_key": "feature-5",
+        "description": "Remembered browsing position and light/dark/system themes"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can I get the source code for free?",
+        "_key": "source",
+        "answer": "Yes. The repository is available at https://github.com/smile-plzz/Luma. Check its license before reusing or redistributing code."
+      },
+      {
+        "question": "Can I buy a signed build now?",
+        "_key": "availability",
+        "answer": "The planned convenience-build price is US$2 or BDT 246.90. Checkout remains unavailable while the signed package, malware scan and release reviews are pending. Any existing GitHub preview is a separate unsigned download."
+      },
+      {
+        "question": "What do I need to run it?",
+        "_key": "requirements",
+        "answer": "Windows 10 2004+ or Windows 11, x64 Extract the complete ZIP to a writable folder Run Luma.App.exe with all bundled files beside it Installed Windows codecs determine real-format preview support"
+      },
+      {
+        "question": "What should I know before using it?",
+        "_key": "limitations",
+        "answer": "Unsigned portable package; no installer Offline previews depend on cache capacity and are not original-file backups Original files must be online to open or modify them No embedded player, editor, or filesystem watcher One transient Windows UI crash was observed before a successful complete retry; root cause remains unestablished"
+      }
+    ],
+    "installerFileKey": "",
+    "sha256Checksum": "",
+    "currentVersion": "v0.6.0",
+    "limitations": [
+      "Unsigned portable package; no installer",
+      "Offline previews depend on cache capacity and are not original-file backups",
+      "Original files must be online to open or modify them",
+      "No embedded player, editor, or filesystem watcher",
+      "One transient Windows UI crash was observed before a successful complete retry; root cause remains unestablished"
+    ],
+    "sourceReadmeURL": "https://github.com/smile-plzz/Luma/blob/main/README.md",
+    "sourceCommit": "f796035ec642253553acab84d67f51bee95d8f18",
+    "sourceEvidenceURLs": [
+      "https://github.com/smile-plzz/Luma/blob/main/README.md",
+      "https://github.com/smile-plzz/Luma/tree/f796035ec642253553acab84d67f51bee95d8f18"
+    ],
+    "contentReviewedAt": "2026-10-15"
+  },
+  {
+    "_id": "license.github.luma",
+    "_type": "licenseRecord",
+    "product": {
+      "_ref": "product.github.luma",
+      "_type": "reference"
+    },
+    "licenseType": "Not specified",
+    "licenseApproved": false,
+    "gplComplianceChecked": false,
+    "dependencyReviewCompleted": false,
+    "contentLegalityChecked": false,
+    "safetyReviewCompleted": false,
+    "trademarkReviewCompleted": false,
+    "notes": "Pending review. Repository license: Not specified. Public repository visibility does not itself grant redistribution rights. Review direct and transitive dependencies, bundled binaries, provider terms, content and trademarks before paid distribution. Source: https://github.com/smile-plzz/Luma/blob/main/README.md at f796035ec642253553acab84d67f51bee95d8f18."
+  },
+  {
+    "_id": "release.github.luma.v0.6.0",
+    "_type": "release",
+    "product": {
+      "_ref": "product.github.luma",
+      "_type": "reference"
+    },
+    "version": "v0.6.0",
+    "releaseDate": "2026-10-13",
+    "changelog": "Luma v0.6.0 unsigned portable GitHub release candidate. Local staging SHA-256 matches published metadata. Signing, malware scan and distribution reviews are pending; this candidate is not available through paid checkout.",
+    "installerFileKey": "",
+    "sha256Checksum": "320e0d5dea5226563b980b18927fc99612bdbe6022153d3b46896dd1ef1aef5c",
+    "isSigned": false,
+    "malwareScanPassed": false,
+    "installerSize": "88751639 bytes",
+    "minOS": "Windows 10 2004+ or Windows 11, x64",
+    "isLatest": false,
+    "sourceReleaseURL": "https://github.com/smile-plzz/Luma/releases/tag/v0.6.0",
+    "sourceArtifactURL": "https://github.com/smile-plzz/Luma/releases/download/v0.6.0/Luma-v0.6.0-win-x64.zip",
+    "sourceCommit": "f796035ec642253553acab84d67f51bee95d8f18",
+    "releaseStatus": "candidate"
+  },
+  {
+    "_id": "product.github.dedupelight",
+    "_type": "product",
+    "title": "DedupeLight",
+    "slug": {
+      "current": "dedupelight",
+      "_type": "slug"
+    },
+    "tagline": "Less clutter. More space.",
+    "summary": "Find and review exact duplicate files on Windows. DedupeLight checks matches with full SHA-256, caches unchanged file hashes, and lets you protect intentional copies before choosing what to recycle, move, copy or export.",
+    "description": "Find and review exact duplicate files on Windows. DedupeLight checks matches with full SHA-256, caches unchanged file hashes, and lets you protect intentional copies before choosing what to recycle, move, copy or export.",
+    "category": "System Utilities",
+    "priceUSD": 200,
+    "priceBDT": 24690,
+    "status": "draft",
+    "featured": false,
+    "repoUrl": "https://github.com/smile-plzz/dedupe-light",
+    "license": "MIT",
+    "minOS": "Windows 10 or Windows 11, 64-bit",
+    "systemRequirements": [
+      "Windows 10 or Windows 11, 64-bit",
+      "Extract the portable ZIP and run DedupeLight.exe",
+      "No separate .NET installation required",
+      "Optional media preview depends on Windows Media Player and installed codecs"
+    ],
+    "features": [
+      {
+        "title": "Exact matching by file size, sample fingerprint and full SHA-256",
+        "_key": "feature-0",
+        "description": "Exact matching by file size, sample fingerprint and full SHA-256"
+      },
+      {
+        "title": "Cached hashes and cancellable background scans",
+        "_key": "feature-1",
+        "description": "Cached hashes and cancellable background scans"
+      },
+      {
+        "title": "Keep oldest, newest, or shortest-path selection rules",
+        "_key": "feature-2",
+        "description": "Keep oldest, newest, or shortest-path selection rules"
+      },
+      {
+        "title": "Persistent file and folder exclusions with JSON import/export",
+        "_key": "feature-3",
+        "description": "Persistent file and folder exclusions with JSON import/export"
+      },
+      {
+        "title": "Image review and optional audio/video preview",
+        "_key": "feature-4",
+        "description": "Image review and optional audio/video preview"
+      },
+      {
+        "title": "Recycle Bin, move, copy, Explorer reveal and CSV export",
+        "_key": "feature-5",
+        "description": "Recycle Bin, move, copy, Explorer reveal and CSV export"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can I get the source code for free?",
+        "_key": "source",
+        "answer": "Yes. The repository is available at https://github.com/smile-plzz/dedupe-light. Check its license before reusing or redistributing code."
+      },
+      {
+        "question": "Can I buy a signed build now?",
+        "_key": "availability",
+        "answer": "The planned convenience-build price is US$2 or BDT 246.90. Checkout remains unavailable while the signed package, malware scan and release reviews are pending. Any existing GitHub preview is a separate unsigned download."
+      },
+      {
+        "question": "What do I need to run it?",
+        "_key": "requirements",
+        "answer": "Windows 10 or Windows 11, 64-bit Extract the portable ZIP and run DedupeLight.exe No separate .NET installation required Optional media preview depends on Windows Media Player and installed codecs"
+      },
+      {
+        "question": "What should I know before using it?",
+        "_key": "limitations",
+        "answer": "Unsigned portable release; SmartScreen may appear Exact file duplicates only, not visually similar images or edited videos Nothing is deleted automatically An individual filesystem call can delay cancellation Exported CSV and exclusion JSON files contain local paths"
+      }
+    ],
+    "installerFileKey": "",
+    "sha256Checksum": "",
+    "currentVersion": "v1.0.0",
+    "limitations": [
+      "Unsigned portable release; SmartScreen may appear",
+      "Exact file duplicates only, not visually similar images or edited videos",
+      "Nothing is deleted automatically",
+      "An individual filesystem call can delay cancellation",
+      "Exported CSV and exclusion JSON files contain local paths"
+    ],
+    "sourceReadmeURL": "https://github.com/smile-plzz/dedupe-light/blob/main/README.md",
+    "sourceCommit": "25835bfd99735bdc282596d78c0e6be466e8e100",
+    "sourceEvidenceURLs": [
+      "https://github.com/smile-plzz/dedupe-light/blob/main/README.md",
+      "https://github.com/smile-plzz/dedupe-light/tree/25835bfd99735bdc282596d78c0e6be466e8e100"
+    ],
+    "contentReviewedAt": "2026-10-15"
+  },
+  {
+    "_id": "license.github.dedupelight",
+    "_type": "licenseRecord",
+    "product": {
+      "_ref": "product.github.dedupelight",
+      "_type": "reference"
+    },
+    "licenseType": "MIT",
+    "licenseApproved": false,
+    "gplComplianceChecked": false,
+    "dependencyReviewCompleted": false,
+    "contentLegalityChecked": false,
+    "safetyReviewCompleted": false,
+    "trademarkReviewCompleted": false,
+    "notes": "Pending review. Repository license: MIT. Public repository visibility does not itself grant redistribution rights. Review direct and transitive dependencies, bundled binaries, provider terms, content and trademarks before paid distribution. Source: https://github.com/smile-plzz/dedupe-light/blob/main/README.md at 25835bfd99735bdc282596d78c0e6be466e8e100."
+  },
+  {
+    "_id": "release.github.dedupelight.v1.0.0",
+    "_type": "release",
+    "product": {
+      "_ref": "product.github.dedupelight",
+      "_type": "reference"
+    },
+    "version": "v1.0.0",
+    "releaseDate": "2026-10-12",
+    "changelog": "DedupeLight v1.0.0 unsigned portable GitHub release candidate. Local staging SHA-256 matches published metadata. Signing, malware scan and distribution reviews are pending; this candidate is not available through paid checkout.",
+    "installerFileKey": "",
+    "sha256Checksum": "9ec8762fd5f71fac6054051c2c46267db4b7adb7b9efb392220bf872296c4182",
+    "isSigned": false,
+    "malwareScanPassed": false,
+    "installerSize": "46126702 bytes",
+    "minOS": "Windows 10 or Windows 11, 64-bit",
+    "isLatest": false,
+    "sourceReleaseURL": "https://github.com/smile-plzz/dedupe-light/releases/tag/v1.0.0",
+    "sourceArtifactURL": "https://github.com/smile-plzz/dedupe-light/releases/download/v1.0.0/DedupeLight-1.0.0-win-x64.zip",
+    "sourceCommit": "25835bfd99735bdc282596d78c0e6be466e8e100",
+    "releaseStatus": "candidate"
+  },
+  {
+    "_id": "product.github.safe-gaming-optimizer",
+    "_type": "product",
+    "title": "Safe Gaming Optimizer",
+    "slug": {
+      "current": "safe-gaming-optimizer",
+      "_type": "slug"
+    },
+    "tagline": "Prepare for play. Restore when you are done.",
+    "summary": "A conservative Windows desktop app for reviewing optional background applications before a gaming session, then restoring the previous power plan and reopening apps with safe executable paths afterward.",
+    "description": "A conservative Windows desktop app for reviewing optional background applications before a gaming session, then restoring the previous power plan and reopening apps with safe executable paths afterward.",
+    "category": "Gaming & Performance",
+    "priceUSD": 200,
+    "priceBDT": 24690,
+    "status": "draft",
+    "featured": false,
+    "repoUrl": "https://github.com/smile-plzz/Safe-Gaming-Optimizer",
+    "license": "Not specified",
+    "minOS": "Windows 10 or Windows 11",
+    "systemRequirements": [
+      "Windows 10 or Windows 11",
+      "Administrator permission required",
+      "Building from source requires .NET 9 SDK",
+      "Self-contained executable intended to require no separate .NET installation"
+    ],
+    "features": [
+      {
+        "title": "Recommended, Review and Protected process categories with reasons",
+        "_key": "feature-0",
+        "description": "Recommended, Review and Protected process categories with reasons"
+      },
+      {
+        "title": "Graceful close before ending selected unresponsive processes",
+        "_key": "feature-1",
+        "description": "Graceful close before ending selected unresponsive processes"
+      },
+      {
+        "title": "Temporary use of an installed High performance power plan",
+        "_key": "feature-2",
+        "description": "Temporary use of an installed High performance power plan"
+      },
+      {
+        "title": "Session changes recorded before application",
+        "_key": "feature-3",
+        "description": "Session changes recorded before application"
+      },
+      {
+        "title": "Notification-area session controls and interrupted-session recovery",
+        "_key": "feature-4",
+        "description": "Notification-area session controls and interrupted-session recovery"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can I get the source code for free?",
+        "_key": "source",
+        "answer": "Yes. The repository is available at https://github.com/smile-plzz/Safe-Gaming-Optimizer. Check its license before reusing or redistributing code."
+      },
+      {
+        "question": "Can I buy a signed build now?",
+        "_key": "availability",
+        "answer": "The planned convenience-build price is US$2 or BDT 246.90. Checkout remains unavailable while the signed package, malware scan and release reviews are pending. Any existing GitHub preview is a separate unsigned download."
+      },
+      {
+        "question": "What do I need to run it?",
+        "_key": "requirements",
+        "answer": "Windows 10 or Windows 11 Administrator permission required Building from source requires .NET 9 SDK Self-contained executable intended to require no separate .NET installation"
+      },
+      {
+        "question": "What should I know before using it?",
+        "_key": "limitations",
+        "answer": "No published GitHub binary release currently available No license specified in repository Does not guarantee an FPS improvement Closing apps cannot restore every document, tab, argument, call or download Does not disable security or change services, drivers, networking, startup tasks or page files"
+      }
+    ],
+    "installerFileKey": "",
+    "sha256Checksum": "",
+    "currentVersion": "",
+    "limitations": [
+      "No published GitHub binary release currently available",
+      "No license specified in repository",
+      "Does not guarantee an FPS improvement",
+      "Closing apps cannot restore every document, tab, argument, call or download",
+      "Does not disable security or change services, drivers, networking, startup tasks or page files"
+    ],
+    "sourceReadmeURL": "https://github.com/smile-plzz/Safe-Gaming-Optimizer/blob/main/README.md",
+    "sourceCommit": "7d4f0afa455d8b4e6f006786d62e08595da26d74",
+    "sourceEvidenceURLs": [
+      "https://github.com/smile-plzz/Safe-Gaming-Optimizer/blob/main/README.md",
+      "https://github.com/smile-plzz/Safe-Gaming-Optimizer/tree/7d4f0afa455d8b4e6f006786d62e08595da26d74"
+    ],
+    "contentReviewedAt": "2026-10-15"
+  },
+  {
+    "_id": "license.github.safe-gaming-optimizer",
+    "_type": "licenseRecord",
+    "product": {
+      "_ref": "product.github.safe-gaming-optimizer",
+      "_type": "reference"
+    },
+    "licenseType": "Not specified",
+    "licenseApproved": false,
+    "gplComplianceChecked": false,
+    "dependencyReviewCompleted": false,
+    "contentLegalityChecked": false,
+    "safetyReviewCompleted": false,
+    "trademarkReviewCompleted": false,
+    "notes": "Pending review. Repository license: Not specified. Public repository visibility does not itself grant redistribution rights. Review direct and transitive dependencies, bundled binaries, provider terms, content and trademarks before paid distribution. Source: https://github.com/smile-plzz/Safe-Gaming-Optimizer/blob/main/README.md at 7d4f0afa455d8b4e6f006786d62e08595da26d74."
+  },
+  {
+    "_id": "product.github.localflix",
+    "_type": "product",
+    "title": "LocalFlix",
+    "slug": {
+      "current": "localflix",
+      "_type": "slug"
+    },
+    "tagline": "Your offline film collection, in one cinematic library.",
+    "summary": "Browse movies and TV shows stored on your own drives with posters, cached metadata, watchlists and local playback. LocalFlix keeps titles visible when a drive is disconnected and supports manual title corrections.",
+    "description": "Browse movies and TV shows stored on your own drives with posters, cached metadata, watchlists and local playback. LocalFlix keeps titles visible when a drive is disconnected and supports manual title corrections.",
+    "category": "Media & Video",
+    "priceUSD": 200,
+    "priceBDT": 24690,
+    "status": "draft",
+    "featured": false,
+    "repoUrl": "https://github.com/smile-plzz/LocalFlix",
+    "license": "Not specified",
+    "minOS": "Windows; release-readiness verification requires .NET 9 and .NET 10 SDKs. Metadata setup requires a user TMDB key, optionally OMDb.",
+    "systemRequirements": [
+      "Windows; release-readiness verification requires .NET 9 and .NET 10 SDKs. Metadata setup requires a user TMDB key, optionally OMDb."
+    ],
+    "features": [
+      {
+        "title": "Local media scanning and title matching",
+        "_key": "feature-0",
+        "description": "Local media scanning and title matching"
+      },
+      {
+        "title": "TMDB and optional OMDb metadata",
+        "_key": "feature-1",
+        "description": "TMDB and optional OMDb metadata"
+      },
+      {
+        "title": "Watchlist and playback progress",
+        "_key": "feature-2",
+        "description": "Watchlist and playback progress"
+      },
+      {
+        "title": "Volume-relative paths for removable drives",
+        "_key": "feature-3",
+        "description": "Volume-relative paths for removable drives"
+      },
+      {
+        "title": "Native VLC playback",
+        "_key": "feature-4",
+        "description": "Native VLC playback"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can I get the source code for free?",
+        "_key": "source",
+        "answer": "Yes. The repository is available at https://github.com/smile-plzz/LocalFlix. Check its license before reusing or redistributing code."
+      },
+      {
+        "question": "Can I buy a signed build now?",
+        "_key": "availability",
+        "answer": "The planned convenience-build price is US$2 or BDT 246.90. Checkout remains unavailable while the signed package, malware scan and release reviews are pending. Any existing GitHub preview is a separate unsigned download."
+      },
+      {
+        "question": "What do I need to run it?",
+        "_key": "requirements",
+        "answer": "Windows; release-readiness verification requires .NET 9 and .NET 10 SDKs. Metadata setup requires a user TMDB key, optionally OMDb."
+      },
+      {
+        "question": "What should I know before using it?",
+        "_key": "limitations",
+        "answer": "No published release asset No declared repository license Portable packaging is not a signed installer Third-party distribution notices and metadata-provider terms require review Real-drive and two-week acceptance gates remain open Several README features remain incomplete"
+      }
+    ],
+    "installerFileKey": "",
+    "sha256Checksum": "",
+    "currentVersion": "",
+    "limitations": [
+      "No published release asset",
+      "No declared repository license",
+      "Portable packaging is not a signed installer",
+      "Third-party distribution notices and metadata-provider terms require review",
+      "Real-drive and two-week acceptance gates remain open",
+      "Several README features remain incomplete"
+    ],
+    "sourceReadmeURL": "https://github.com/smile-plzz/LocalFlix/blob/main/README.md",
+    "sourceCommit": "1119c47748293d776aaea339693c54c960b6cb1b",
+    "sourceEvidenceURLs": [
+      "https://github.com/smile-plzz/LocalFlix/blob/main/README.md",
+      "https://github.com/smile-plzz/LocalFlix/tree/1119c47748293d776aaea339693c54c960b6cb1b"
+    ],
+    "contentReviewedAt": "2026-10-15"
+  },
+  {
+    "_id": "license.github.localflix",
+    "_type": "licenseRecord",
+    "product": {
+      "_ref": "product.github.localflix",
+      "_type": "reference"
+    },
+    "licenseType": "Not specified",
+    "licenseApproved": false,
+    "gplComplianceChecked": false,
+    "dependencyReviewCompleted": false,
+    "contentLegalityChecked": false,
+    "safetyReviewCompleted": false,
+    "trademarkReviewCompleted": false,
+    "notes": "Pending review. Repository license: Not specified. Public repository visibility does not itself grant redistribution rights. Review direct and transitive dependencies, bundled binaries, provider terms, content and trademarks before paid distribution. Source: https://github.com/smile-plzz/LocalFlix/blob/main/README.md at 1119c47748293d776aaea339693c54c960b6cb1b."
+  },
+  {
+    "_id": "product.github.hdd-cache-warmer",
+    "_type": "product",
+    "title": "HDD Cache Warmer",
+    "slug": {
+      "current": "hdd-cache-warmer",
+      "_type": "slug"
+    },
+    "tagline": "Prepare frequently used files for faster repeat access.",
+    "summary": "A Windows utility that sequentially reads a chosen folder or drive to warm the operating system's file cache. Follow progress, pause or cancel a run, and launch warming from File Explorer.",
+    "description": "A Windows utility that sequentially reads a chosen folder or drive to warm the operating system's file cache. Follow progress, pause or cancel a run, and launch warming from File Explorer.",
+    "category": "System Utilities",
+    "priceUSD": 200,
+    "priceBDT": 24690,
+    "status": "draft",
+    "featured": false,
+    "repoUrl": "https://github.com/smile-plzz/HDDCacheWarmer",
+    "license": "Not specified",
+    "minOS": "Windows 10/11; source build requires .NET 8 SDK or Visual Studio 2022 17.8+ with desktop development workload.",
+    "systemRequirements": [
+      "Windows 10/11; source build requires .NET 8 SDK or Visual Studio 2022 17.8+ with desktop development workload."
+    ],
+    "features": [
+      {
+        "title": "Folder and drive selection",
+        "_key": "feature-0",
+        "description": "Folder and drive selection"
+      },
+      {
+        "title": "Sequential file reads",
+        "_key": "feature-1",
+        "description": "Sequential file reads"
+      },
+      {
+        "title": "Progress and ETA",
+        "_key": "feature-2",
+        "description": "Progress and ETA"
+      },
+      {
+        "title": "Pause, resume and cancel",
+        "_key": "feature-3",
+        "description": "Pause, resume and cancel"
+      },
+      {
+        "title": "Per-user Explorer context menu",
+        "_key": "feature-4",
+        "description": "Per-user Explorer context menu"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can I get the source code for free?",
+        "_key": "source",
+        "answer": "Yes. The repository is available at https://github.com/smile-plzz/HDDCacheWarmer. Check its license before reusing or redistributing code."
+      },
+      {
+        "question": "Can I buy a signed build now?",
+        "_key": "availability",
+        "answer": "The planned convenience-build price is US$2 or BDT 246.90. Checkout remains unavailable while the signed package, malware scan and release reviews are pending. Any existing GitHub preview is a separate unsigned download."
+      },
+      {
+        "question": "What do I need to run it?",
+        "_key": "requirements",
+        "answer": "Windows 10/11; source build requires .NET 8 SDK or Visual Studio 2022 17.8+ with desktop development workload."
+      },
+      {
+        "question": "What should I know before using it?",
+        "_key": "limitations",
+        "answer": "No published release asset No declared repository license README explicitly says installer is a skeleton, not a signed tested installer README says first real Windows compilation still requires verification Tray, schedules and automatic warming are not implemented Cache benefits depend on available RAM and workload. Do not promise permanent acceleration or SSD-like performance. Extremely large trees buffer file metadata in RAM."
+      }
+    ],
+    "installerFileKey": "",
+    "sha256Checksum": "",
+    "currentVersion": "",
+    "limitations": [
+      "No published release asset",
+      "No declared repository license",
+      "README explicitly says installer is a skeleton, not a signed tested installer",
+      "README says first real Windows compilation still requires verification",
+      "Tray, schedules and automatic warming are not implemented",
+      "Cache benefits depend on available RAM and workload. Do not promise permanent acceleration or SSD-like performance. Extremely large trees buffer file metadata in RAM."
+    ],
+    "sourceReadmeURL": "https://github.com/smile-plzz/HDDCacheWarmer/blob/main/README.md",
+    "sourceCommit": "8f7313e90de311074c043c5a68287c8c04b69b13",
+    "sourceEvidenceURLs": [
+      "https://github.com/smile-plzz/HDDCacheWarmer/blob/main/README.md",
+      "https://github.com/smile-plzz/HDDCacheWarmer/tree/8f7313e90de311074c043c5a68287c8c04b69b13"
+    ],
+    "contentReviewedAt": "2026-10-15"
+  },
+  {
+    "_id": "license.github.hdd-cache-warmer",
+    "_type": "licenseRecord",
+    "product": {
+      "_ref": "product.github.hdd-cache-warmer",
+      "_type": "reference"
+    },
+    "licenseType": "Not specified",
+    "licenseApproved": false,
+    "gplComplianceChecked": false,
+    "dependencyReviewCompleted": false,
+    "contentLegalityChecked": false,
+    "safetyReviewCompleted": false,
+    "trademarkReviewCompleted": false,
+    "notes": "Pending review. Repository license: Not specified. Public repository visibility does not itself grant redistribution rights. Review direct and transitive dependencies, bundled binaries, provider terms, content and trademarks before paid distribution. Source: https://github.com/smile-plzz/HDDCacheWarmer/blob/main/README.md at 8f7313e90de311074c043c5a68287c8c04b69b13."
+  },
+  {
+    "_id": "product.github.photo-library",
+    "_type": "product",
+    "title": "Photo Library",
+    "slug": {
+      "current": "photo-library",
+      "_type": "slug"
+    },
+    "tagline": "Find and enjoy the photos already on your computer.",
+    "summary": "Build a searchable, date-organised photo library over your existing folders. Browse a timeline or thumbnail grid, rate favourites, add tags and find exact duplicates. Your originals stay in place, with library data stored separately.",
+    "description": "Build a searchable, date-organised photo library over your existing folders. Browse a timeline or thumbnail grid, rate favourites, add tags and find exact duplicates. Your originals stay in place, with library data stored separately.",
+    "category": "Media & Video",
+    "priceUSD": 200,
+    "priceBDT": 24690,
+    "status": "draft",
+    "featured": false,
+    "repoUrl": "https://github.com/smile-plzz/PhotoManagementApp",
+    "license": "Not specified",
+    "minOS": "Source run requires .NET 9 SDK. README provides a self-contained win-x64 publishing command.",
+    "systemRequirements": [
+      "Source run requires .NET 9 SDK. README provides a self-contained win-x64 publishing command."
+    ],
+    "features": [
+      {
+        "title": "Timeline, grid and folder browsing",
+        "_key": "feature-0",
+        "description": "Timeline, grid and folder browsing"
+      },
+      {
+        "title": "Search, filters and sorting",
+        "_key": "feature-1",
+        "description": "Search, filters and sorting"
+      },
+      {
+        "title": "Star ratings, favourites and tags",
+        "_key": "feature-2",
+        "description": "Star ratings, favourites and tags"
+      },
+      {
+        "title": "Full-screen viewer and slideshow",
+        "_key": "feature-3",
+        "description": "Full-screen viewer and slideshow"
+      },
+      {
+        "title": "Exact duplicate detection",
+        "_key": "feature-4",
+        "description": "Exact duplicate detection"
+      },
+      {
+        "title": "Incremental scans",
+        "_key": "feature-5",
+        "description": "Incremental scans"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can I get the source code for free?",
+        "_key": "source",
+        "answer": "Yes. The repository is available at https://github.com/smile-plzz/PhotoManagementApp. Check its license before reusing or redistributing code."
+      },
+      {
+        "question": "Can I buy a signed build now?",
+        "_key": "availability",
+        "answer": "The planned convenience-build price is US$2 or BDT 246.90. Checkout remains unavailable while the signed package, malware scan and release reviews are pending. Any existing GitHub preview is a separate unsigned download."
+      },
+      {
+        "question": "What do I need to run it?",
+        "_key": "requirements",
+        "answer": "Source run requires .NET 9 SDK. README provides a self-contained win-x64 publishing command."
+      },
+      {
+        "question": "What should I know before using it?",
+        "_key": "limitations",
+        "answer": "No published release asset No declared repository license Cross-platform runtime claims come from README, not verified installers No photo editing or face recognition. RAW and HEIC files may be indexed but need an external viewer. Album management beyond tags is not built."
+      }
+    ],
+    "installerFileKey": "",
+    "sha256Checksum": "",
+    "currentVersion": "",
+    "limitations": [
+      "No published release asset",
+      "No declared repository license",
+      "Cross-platform runtime claims come from README, not verified installers",
+      "No photo editing or face recognition. RAW and HEIC files may be indexed but need an external viewer. Album management beyond tags is not built."
+    ],
+    "sourceReadmeURL": "https://github.com/smile-plzz/PhotoManagementApp/blob/main/README.md",
+    "sourceCommit": "8307824eed96b6039780fe73b7116ce614b5def8",
+    "sourceEvidenceURLs": [
+      "https://github.com/smile-plzz/PhotoManagementApp/blob/main/README.md",
+      "https://github.com/smile-plzz/PhotoManagementApp/tree/8307824eed96b6039780fe73b7116ce614b5def8"
+    ],
+    "contentReviewedAt": "2026-10-15"
+  },
+  {
+    "_id": "license.github.photo-library",
+    "_type": "licenseRecord",
+    "product": {
+      "_ref": "product.github.photo-library",
+      "_type": "reference"
+    },
+    "licenseType": "Not specified",
+    "licenseApproved": false,
+    "gplComplianceChecked": false,
+    "dependencyReviewCompleted": false,
+    "contentLegalityChecked": false,
+    "safetyReviewCompleted": false,
+    "trademarkReviewCompleted": false,
+    "notes": "Pending review. Repository license: Not specified. Public repository visibility does not itself grant redistribution rights. Review direct and transitive dependencies, bundled binaries, provider terms, content and trademarks before paid distribution. Source: https://github.com/smile-plzz/PhotoManagementApp/blob/main/README.md at 8307824eed96b6039780fe73b7116ce614b5def8."
+  },
+  {
+    "_id": "product.github.lyricfloat",
+    "_type": "product",
+    "title": "LyricFloat",
+    "slug": {
+      "current": "lyricfloat",
+      "_type": "slug"
+    },
+    "tagline": "Keep the current lyric floating beside your music.",
+    "summary": "A lightweight Windows lyrics companion that reads the active media session and displays synchronised lyric lines in a transparent, always-on-top widget. Drag or resize the overlay and adjust lyric timing without a Spotify account or API key.",
+    "description": "A lightweight Windows lyrics companion that reads the active media session and displays synchronised lyric lines in a transparent, always-on-top widget. Drag or resize the overlay and adjust lyric timing without a Spotify account or API key.",
+    "category": "Media & Video",
+    "priceUSD": 200,
+    "priceBDT": 24690,
+    "status": "draft",
+    "featured": false,
+    "repoUrl": "https://github.com/smile-plzz/LyricFloat",
+    "license": "MIT",
+    "minOS": "Windows and WebView2; source build requires Node 20+, Rust and Microsoft C++ Build Tools.",
+    "systemRequirements": [
+      "Windows and WebView2; source build requires Node 20+, Rust and Microsoft C++ Build Tools."
+    ],
+    "features": [
+      {
+        "title": "Windows media-session detection",
+        "_key": "feature-0",
+        "description": "Windows media-session detection"
+      },
+      {
+        "title": "Line-synchronised LRCLIB lyrics",
+        "_key": "feature-1",
+        "description": "Line-synchronised LRCLIB lyrics"
+      },
+      {
+        "title": "Transparent always-on-top overlay",
+        "_key": "feature-2",
+        "description": "Transparent always-on-top overlay"
+      },
+      {
+        "title": "Drag and resize",
+        "_key": "feature-3",
+        "description": "Drag and resize"
+      },
+      {
+        "title": "Remembered manual timing offset",
+        "_key": "feature-4",
+        "description": "Remembered manual timing offset"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can I get the source code for free?",
+        "_key": "source",
+        "answer": "Yes. The repository is available at https://github.com/smile-plzz/LyricFloat. Check its license before reusing or redistributing code."
+      },
+      {
+        "question": "Can I buy a signed build now?",
+        "_key": "availability",
+        "answer": "The planned convenience-build price is US$2 or BDT 246.90. Checkout remains unavailable while the signed package, malware scan and release reviews are pending. Any existing GitHub preview is a separate unsigned download."
+      },
+      {
+        "question": "What do I need to run it?",
+        "_key": "requirements",
+        "answer": "Windows and WebView2; source build requires Node 20+, Rust and Microsoft C++ Build Tools."
+      },
+      {
+        "question": "What should I know before using it?",
+        "_key": "limitations",
+        "answer": "No published release asset Real desktop overlay and timing smoke tests still required Third-party lyrics copyright and LRCLIB terms require commercial-distribution review Depends on LRCLIB coverage and SMTC-compatible players. Track title, artist, album and duration are sent to LRCLIB. Tray settings, persistent position and offline cache are planned, not present."
+      }
+    ],
+    "installerFileKey": "",
+    "sha256Checksum": "",
+    "currentVersion": "",
+    "limitations": [
+      "No published release asset",
+      "Real desktop overlay and timing smoke tests still required",
+      "Third-party lyrics copyright and LRCLIB terms require commercial-distribution review",
+      "Depends on LRCLIB coverage and SMTC-compatible players. Track title, artist, album and duration are sent to LRCLIB. Tray settings, persistent position and offline cache are planned, not present."
+    ],
+    "sourceReadmeURL": "https://github.com/smile-plzz/LyricFloat/blob/main/README.md",
+    "sourceCommit": "57e06037e24462f27cd3c077190d7118b5c5f681",
+    "sourceEvidenceURLs": [
+      "https://github.com/smile-plzz/LyricFloat/blob/main/README.md",
+      "https://github.com/smile-plzz/LyricFloat/tree/57e06037e24462f27cd3c077190d7118b5c5f681"
+    ],
+    "contentReviewedAt": "2026-10-15"
+  },
+  {
+    "_id": "license.github.lyricfloat",
+    "_type": "licenseRecord",
+    "product": {
+      "_ref": "product.github.lyricfloat",
+      "_type": "reference"
+    },
+    "licenseType": "MIT",
+    "licenseApproved": false,
+    "gplComplianceChecked": false,
+    "dependencyReviewCompleted": false,
+    "contentLegalityChecked": false,
+    "safetyReviewCompleted": false,
+    "trademarkReviewCompleted": false,
+    "notes": "Pending review. Repository license: MIT. Public repository visibility does not itself grant redistribution rights. Review direct and transitive dependencies, bundled binaries, provider terms, content and trademarks before paid distribution. Source: https://github.com/smile-plzz/LyricFloat/blob/main/README.md at 57e06037e24462f27cd3c077190d7118b5c5f681."
+  },
+  {
+    "_id": "project.github.elementshot",
+    "_type": "project",
+    "title": "ElementShot",
+    "slug": {
+      "current": "elementshot",
+      "_type": "slug"
+    },
+    "order": 90,
+    "year": "2026",
+    "summary": "Capture a visible webpage element or a custom rectangle as a PNG. ElementShot copies it to your clipboard and saves it to Downloads, with flexible parent-and-child selection, padding and filename settings.",
+    "category": "Full-Stack",
+    "tags": [
+      "Browser extension",
+      "TypeScript",
+      "Screenshots",
+      "MIT"
+    ],
+    "repoUrl": "https://github.com/smile-plzz/Element-Screenshot-Extension",
+    "stack": "TypeScript, Manifest V3, browser screenshot APIs",
+    "problem": "Capturing a single webpage component can require a manual screenshot and crop.",
+    "approach": "Select a visible component or draw a custom area, then save and copy a PNG with local browser APIs.",
+    "outcome": "Version 1.1.0 has downloadable Chrome and Firefox compatibility ZIP packages. Chrome/Edge uses unpacked developer-mode installation; permanent Firefox installation requires signing. Captures are limited to visible viewport pixels. Browser store publication remains separate.",
+    "placeholderCopy": false,
+    "imageHeight": 200,
+    "featured": false,
+    "hidden": true,
+    "sourceReadmeURL": "https://github.com/smile-plzz/Element-Screenshot-Extension/blob/main/README.md",
+    "sourceCommit": "df215b694d6ac1cd5a5c2340d8d601e02f2154b8",
+    "sourceEvidenceURLs": [
+      "https://github.com/smile-plzz/Element-Screenshot-Extension/blob/main/README.md",
+      "https://github.com/smile-plzz/Element-Screenshot-Extension/blob/main/LICENSE",
+      "https://github.com/smile-plzz/Element-Screenshot-Extension/releases/tag/v1.1.0"
+    ]
+  }
+]

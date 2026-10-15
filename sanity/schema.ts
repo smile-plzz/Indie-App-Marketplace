@@ -246,6 +246,7 @@ const siteSettings = {
       type: "object",
       fields: [
         { name: "linkedin", type: "url" },
+          { name: "medium", type: "url" },
         { name: "github", type: "url" },
         { name: "youtube", type: "url" },
         { name: "facebook", type: "url" },
@@ -317,6 +318,14 @@ const product = {
     { name: "license", type: "string" },
     { name: "minOS", type: "string", initialValue: "Windows 10 / 11 (64-bit)" },
     { name: "systemRequirements", type: "array", of: [{ type: "string" }] },
+    { name: "sourceReadmeURL", title: "Source README", type: "url" },
+    { name: "sourceReleaseURL", title: "Source release", type: "url" },
+    { name: "sourceArtifactURL", title: "Source archive", type: "url" },
+    { name: "sourceCommit", type: "string" },
+    { name: "sourceEvidenceURLs", type: "array", of: [{ type: "url" }] },
+    { name: "limitations", type: "array", of: [{ type: "string" }] },
+    { name: "publicationBlockers", type: "array", of: [{ type: "string" }] },
+    { name: "contentReviewedAt", type: "date" },
     {
       name: "features",
       type: "array",
@@ -364,6 +373,10 @@ const release = {
   title: "App Release",
   type: "document",
   fields: [
+    { name: "sourceReleaseURL", type: "url" },
+    { name: "sourceArtifactURL", type: "url" },
+    { name: "sourceCommit", type: "string" },
+    { name: "releaseStatus", type: "string" },
     {
       name: "product",
       type: "reference",
