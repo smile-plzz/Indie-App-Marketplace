@@ -23,6 +23,7 @@ export interface PaymentSessionResult {
 export interface VerifyPaymentParams {
   orderId: string;
   orderReference: string;
+  queryOnly?: boolean;
   expectedAmount: number;
   expectedCurrency: Currency;
   gatewayReference?: string;

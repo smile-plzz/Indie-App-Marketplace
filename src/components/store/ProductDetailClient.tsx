@@ -1,71 +1,59 @@
 "use client";
-
 import { useState } from "react";
 import type { MarketplaceProduct } from "@/lib/marketplace/types";
 import { formatPrice } from "@/lib/marketplace/catalog";
 import styles from "./store.module.css";
-
 interface ProductDetailClientProps {
-  product: MarketplaceProduct;
+    product: MarketplaceProduct;
+    gateways: string[];
 }
-
-export function ProductDetailClient({ product }: ProductDetailClientProps) {
-  const [currency, setCurrency] = useState<"BDT" | "USD">("BDT");
-  const [showCheckout, setShowCheckout] = useState(false);
-  const [email, setEmail] = useState("");
-  const [gateway, setGateway] = useState("sandbox");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
-
-  const priceFormatted = formatPrice(
-    currency === "USD" ? product.priceUSD : product.priceBDT,
-    currency
-  );
-
-  const handleCopyChecksum = () => {
-    navigator.clipboard.writeText(product.sha256Checksum);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleCheckoutSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email || !email.includes("@")) {
-      setError("Please enter a valid email address");
-      return;
-    }
-
-    setLoading(true);
-    setError(null);
-
-    try {
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          slug: product.slug,
-          email,
-          currency,
-          gateway,
-        }),
-      });
-
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        throw new Error(data.error || "Failed to initiate checkout session");
-      }
-
-      // Redirect to the gateway session URL
-      window.location.href = data.redirectUrl;
-    } catch (err: any) {
-      setError(err?.message || "An unexpected error occurred");
-      setLoading(false);
-    }
-  };
-
-  return (
-    <div>
+export function ProductDetailClient({ product, gateways }: ProductDetailClientProps) {
+    const [currency, setCurrency] = useState<"BDT" | "USD">("BDT");
+    const [showCheckout, setShowCheckout] = useState(false);
+    const [email, setEmail] = useState("");
+    const [gateway, setGateway] = useState(gateways[0] || "");
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [copied, setCopied] = useState(false);
+    const priceFormatted = formatPrice(currency === "USD" ? product.priceUSD : product.priceBDT, currency);
+    const handleCopyChecksum = () => {
+        navigator.clipboard.writeText(product.sha256Checksum);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+    const handleCheckoutSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email || !email.includes("@")) {
+            setError("Please enter a valid email address");
+            return;
+        }
+        if (!gateway) { setError("Checkout is not available yet. Please use the free GitHub route."); return; }
+        setLoading(true);
+        setError(null);
+        try {
+            const res = await fetch("/api/checkout", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    slug: product.slug,
+                    email,
+                    currency,
+                    gateway,
+                }),
+            });
+            const data = await res.json();
+            if (!res.ok || !data.success) {
+                throw new Error(data.error || "Failed to initiate checkout session");
+            }
+            // Redirect to the gateway session URL
+            window.location.href = data.redirectUrl;
+        }
+        catch (err: any) {
+            setError(err?.message || "An unexpected error occurred");
+            setLoading(false);
+        }
+    };
+    return (<div>
       <div className={styles.detailHeader}>
         <div className={styles.badgesRow}>
           <span className={`${styles.badge} ${styles.badgeAccent}`}>{product.category}</span>
@@ -86,20 +74,10 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
               Ready-to-Run Installer
             </span>
             <div className={styles.currencyToggle}>
-              <button
-                className={`${styles.currencyBtn} ${
-                  currency === "BDT" ? styles.currencyBtnActive : ""
-                }`}
-                onClick={() => setCurrency("BDT")}
-              >
+              <button className={`${styles.currencyBtn} ${currency === "BDT" ? styles.currencyBtnActive : ""}`} onClick={() => setCurrency("BDT")}>
                 BDT
               </button>
-              <button
-                className={`${styles.currencyBtn} ${
-                  currency === "USD" ? styles.currencyBtnActive : ""
-                }`}
-                onClick={() => setCurrency("USD")}
-              >
+              <button className={`${styles.currencyBtn} ${currency === "USD" ? styles.currencyBtnActive : ""}`} onClick={() => setCurrency("USD")}>
                 USD
               </button>
             </div>
@@ -112,7 +90,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
           </div>
 
           <p style={{ fontSize: "13px", color: "var(--color-meta)", margin: "0 0 16px", lineHeight: "1.5" }}>
-            Includes verified code-signed installer, SHA-256 checksum, automatic update access, and email support.
+            {product.currentVersion === "demo" ? "Sandbox purchase only. Downloads a harmless text fixture, not an installer." : "Includes a signed installer, release checksum, and email support."}
           </p>
 
           <button className={styles.primaryBtn} onClick={() => setShowCheckout(true)}>
@@ -136,12 +114,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
             All source code is publicly available under the {product.license} open-source license. Clone and compile it on your machine anytime.
           </p>
 
-          <a
-            href={product.repoUrl}
-            target="_blank"
-            rel="noreferrer"
-            className={styles.secondaryBtn}
-          >
+          <a href={product.repoUrl} target="_blank" rel="noreferrer" className={styles.secondaryBtn}>
             View GitHub Repository
           </a>
         </div>
@@ -159,12 +132,10 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
       <div className={styles.sectionBlock}>
         <h2 className={styles.sectionHeading}>Key Features</h2>
         <div className={styles.featuresGrid}>
-          {product.features.map((feature, i) => (
-            <div key={i} className={styles.featureCard}>
+          {product.features.map((feature, i) => (<div key={i} className={styles.featureCard}>
               <h3 className={styles.featureTitle}>{feature.title}</h3>
               <p className={styles.featureDesc}>{feature.description}</p>
-            </div>
-          ))}
+            </div>))}
         </div>
       </div>
 
@@ -216,9 +187,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
       <div className={styles.sectionBlock}>
         <h2 className={styles.sectionHeading}>System Requirements & Verification</h2>
         <ul style={{ paddingLeft: "20px", color: "var(--color-meta)", fontSize: "15px", lineHeight: "1.8" }}>
-          {product.systemRequirements.map((req, i) => (
-            <li key={i}>{req}</li>
-          ))}
+          {product.systemRequirements.map((req, i) => (<li key={i}>{req}</li>))}
         </ul>
 
         <div style={{ marginTop: "24px" }}>
@@ -235,40 +204,28 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
       </div>
 
       {/* Changelog */}
-      {product.changelog && product.changelog.length > 0 && (
-        <div className={styles.sectionBlock}>
+      {product.changelog && product.changelog.length > 0 && (<div className={styles.sectionBlock}>
           <h2 className={styles.sectionHeading}>Release History</h2>
           <ul style={{ paddingLeft: "20px", color: "var(--color-meta)", fontSize: "14px", lineHeight: "1.8" }}>
-            {product.changelog.map((entry, idx) => (
-              <li key={idx}>{entry}</li>
-            ))}
+            {product.changelog.map((entry, idx) => (<li key={idx}>{entry}</li>))}
           </ul>
-        </div>
-      )}
+        </div>)}
 
       {/* FAQ */}
-      {product.faq && product.faq.length > 0 && (
-        <div className={styles.sectionBlock}>
+      {product.faq && product.faq.length > 0 && (<div className={styles.sectionBlock}>
           <h2 className={styles.sectionHeading}>Frequently Asked Questions</h2>
           <div>
-            {product.faq.map((item, idx) => (
-              <div key={idx} className={styles.faqItem}>
+            {product.faq.map((item, idx) => (<div key={idx} className={styles.faqItem}>
                 <div className={styles.faqQuestion}>{item.question}</div>
                 <div className={styles.faqAnswer}>{item.answer}</div>
-              </div>
-            ))}
+              </div>))}
           </div>
-        </div>
-      )}
+        </div>)}
 
       {/* Checkout Modal */}
-      {showCheckout && (
-        <div className={styles.modalOverlay} onClick={() => !loading && setShowCheckout(false)}>
+      {showCheckout && (<div className={styles.modalOverlay} onClick={() => !loading && setShowCheckout(false)}>
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <button
-              className={styles.modalClose}
-              onClick={() => !loading && setShowCheckout(false)}
-            >
+            <button className={styles.modalClose} onClick={() => !loading && setShowCheckout(false)}>
               ×
             </button>
 
@@ -279,89 +236,63 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
               {product.title} - {priceFormatted}
             </p>
 
-            {error && (
-              <div
-                style={{
-                  background: "#fee2e2",
-                  color: "#b91c1c",
-                  padding: "10px 14px",
-                  borderRadius: "4px",
-                  fontSize: "13px",
-                  marginBottom: "16px",
-                }}
-              >
+            {error && (<div style={{
+                    background: "#fee2e2",
+                    color: "#b91c1c",
+                    padding: "10px 14px",
+                    borderRadius: "4px",
+                    fontSize: "13px",
+                    marginBottom: "16px",
+                }}>
                 {error}
-              </div>
-            )}
+              </div>)}
 
             <form onSubmit={handleCheckoutSubmit}>
               <div style={{ marginBottom: "16px" }}>
-                <label
-                  style={{
-                    display: "block",
-                    fontSize: "13px",
-                    fontWeight: "600",
-                    marginBottom: "6px",
-                    color: "var(--color-text)",
-                  }}
-                >
+                <label style={{
+                display: "block",
+                fontSize: "13px",
+                fontWeight: "600",
+                marginBottom: "6px",
+                color: "var(--color-text)",
+            }}>
                   Your Email Address (for download link & receipt):
                 </label>
-                <input
-                  type="email"
-                  required
-                  placeholder="name@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  style={{
-                    width: "100%",
-                    padding: "10px 14px",
-                    fontSize: "14px",
-                    border: "1px solid var(--color-divider)",
-                    borderRadius: "4px",
-                    background: "var(--color-bg)",
-                    color: "var(--color-text)",
-                  }}
-                />
+                <input type="email" required placeholder="name@example.com" value={email} onChange={(e) => setEmail(e.target.value)} style={{
+                width: "100%",
+                padding: "10px 14px",
+                fontSize: "14px",
+                border: "1px solid var(--color-divider)",
+                borderRadius: "4px",
+                background: "var(--color-bg)",
+                color: "var(--color-text)",
+            }}/>
               </div>
 
               <div style={{ marginBottom: "20px" }}>
-                <label
-                  style={{
-                    display: "block",
-                    fontSize: "13px",
-                    fontWeight: "600",
-                    marginBottom: "6px",
-                    color: "var(--color-text)",
-                  }}
-                >
+                <label style={{
+                display: "block",
+                fontSize: "13px",
+                fontWeight: "600",
+                marginBottom: "6px",
+                color: "var(--color-text)",
+            }}>
                   Payment Method:
                 </label>
-                <select
-                  value={gateway}
-                  onChange={(e) => setGateway(e.target.value)}
-                  style={{
-                    width: "100%",
-                    padding: "10px 14px",
-                    fontSize: "14px",
-                    border: "1px solid var(--color-divider)",
-                    borderRadius: "4px",
-                    background: "var(--color-bg)",
-                    color: "var(--color-text)",
-                  }}
-                >
-                  <option value="sandbox">Sandbox Test Simulator (Instant)</option>
-                  <option value="bkash">bKash (Bangladesh Mobile Wallet)</option>
-                  <option value="sslcommerz">Cards / Net Banking (SSLCommerz)</option>
+                <select value={gateway} onChange={(e) => setGateway(e.target.value)} style={{
+                width: "100%",
+                padding: "10px 14px",
+                fontSize: "14px",
+                border: "1px solid var(--color-divider)",
+                borderRadius: "4px",
+                background: "var(--color-bg)",
+                color: "var(--color-text)",
+            }}>
+                  {gateways.map(name => <option key={name} value={name}>{({sandbox: "Sandbox test", bkash: "bKash", sslcommerz: "Cards & mobile wallets"} as Record<string,string>)[name]}</option>)}
                 </select>
               </div>
 
-              <button
-                type="submit"
-                className={styles.primaryBtn}
-                disabled={loading}
-                style={{ opacity: loading ? 0.7 : 1 }}
-              >
+              <button type="submit" className={styles.primaryBtn} disabled={loading} style={{ opacity: loading ? 0.7 : 1 }}>
                 {loading ? "Preparing Checkout..." : `Pay ${priceFormatted}`}
               </button>
 
@@ -370,8 +301,6 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
               </p>
             </form>
           </div>
-        </div>
-      )}
-    </div>
-  );
+        </div>)}
+    </div>);
 }

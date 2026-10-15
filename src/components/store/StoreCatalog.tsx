@@ -15,13 +15,7 @@ export function StoreCatalog({ products }: StoreCatalogProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const categories = [
-    "All",
-    "System Utilities",
-    "Media & Video",
-    "Productivity",
-    "Gaming & Performance",
-  ];
+  const categories = ["All", ...Array.from(new Set(products.map(product => product.category).filter(Boolean))).sort()];
 
   const filtered = products.filter((product) => {
     const matchesCategory =
@@ -46,6 +40,7 @@ export function StoreCatalog({ products }: StoreCatalogProps) {
               className={`${styles.filterBtn} ${
                 selectedCategory === cat ? styles.filterBtnActive : ""
               }`}
+              aria-pressed={selectedCategory === cat}
               onClick={() => setSelectedCategory(cat)}
             >
               {cat}
@@ -57,7 +52,7 @@ export function StoreCatalog({ products }: StoreCatalogProps) {
           <input
             type="text"
             className={styles.searchBox}
-            placeholder="Search tools & apps..."
+            aria-label="Search apps" placeholder="Search apps"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
@@ -96,6 +91,7 @@ export function StoreCatalog({ products }: StoreCatalogProps) {
               href={`/store/${product.slug}`}
               className={styles.card}
             >
+              {product.shot?.url ? <img src={product.shot.url} alt={product.shot.alt || product.title} style={{width:"100%",height:180,objectFit:"cover",borderRadius:12,marginBottom:20}}/> : null}
               <div className={styles.cardHeader}>
                 <span className={styles.cardCategory}>{product.category}</span>
                 <span className={styles.versionBadge}>{product.currentVersion}</span>
