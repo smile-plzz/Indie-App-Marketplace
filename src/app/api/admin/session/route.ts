@@ -1,12 +1,16 @@
-import { rateLimited } from "@/lib/marketplace/rate-limit";
+import { adminLoginLimited } from "@/lib/marketplace/admin-login-limit";
 import { NextResponse } from "next/server";
 import { SESSION_COOKIE, adminConfigured, createSession } from "@/lib/auth";
 export const runtime = "nodejs";
 export async function POST(request: Request) {
-    if (await rateLimited(request, "admin-login", 5, 300))
-        return NextResponse.json({ error: "Too many attempts. Try again in five minutes." }, { status: 429 });
     if (!adminConfigured()) {
         return NextResponse.json({ error: "Studio is closed  -  ADMIN_PASSWORD is not set." }, { status: 503 });
+    }
+    try {
+        if (await adminLoginLimited(request))
+            return NextResponse.json({ error: "Too many attempts. Try again in five minutes." }, { status: 429 });
+    } catch {
+        return NextResponse.json({ error: "Login protection is unavailable. Check the Sanity or database connection." }, { status: 503 });
     }
     const body = (await request.json().catch(() => null)) as {
         password?: string;
