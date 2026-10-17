@@ -32,6 +32,7 @@ export function SettingsForm({
       phoneHref: settings.phoneHref,
       resumeUrl: settings.resumeUrl,
       contactHeadline: settings.contactHeadline,
+      medium: settings.links.medium || "",
       linkedin: settings.links.linkedin,
       github: settings.links.github,
       youtube: settings.links.youtube,
@@ -58,6 +59,7 @@ export function SettingsForm({
           resumeUrl: next.resumeUrl,
           contactHeadline: next.contactHeadline,
           links: {
+            medium: next.medium,
             linkedin: next.linkedin,
             github: next.github,
             youtube: next.youtube,
@@ -161,7 +163,8 @@ export function SettingsForm({
           <Text id="phone" label="Phone" value={draft.phone} onChange={(v) => set("phone", v)} tnum />
         </div>
         <div className={styles.formRow}>
-          <Text id="linkedin" label="LinkedIn" value={draft.linkedin} onChange={(v) => set("linkedin", v)} />
+          <Text id="medium" label="Medium" value={draft.medium} onChange={(v) => set("medium", v)} />
+            <Text id="linkedin" label="LinkedIn" value={draft.linkedin} onChange={(v) => set("linkedin", v)} />
           <Text id="github" label="GitHub" value={draft.github} onChange={(v) => set("github", v)} />
         </div>
         <div className={styles.formRow}>
@@ -171,7 +174,7 @@ export function SettingsForm({
 
         <Text
           id="resumeUrl"
-          label="Résumé PDF  -  the Drive link the hero button points at"
+          label="RÃ©sumÃ© PDF  -  the Drive link the hero button points at"
           value={draft.resumeUrl}
           onChange={(v) => set("resumeUrl", v)}
         />
@@ -183,7 +186,7 @@ export function SettingsForm({
             onClick={() => void commit()}
             disabled={busy || !dirty || !writable}
           >
-            {busy ? "Saving…" : "Save"}
+            {busy ? "Savingâ€¦" : "Save"}
           </button>
           {savedAt ? <span className="kick tnum">Saved {savedAt}</span> : null}
           {dirty ? <span className="tag tag-accent">Unsaved changes</span> : null}

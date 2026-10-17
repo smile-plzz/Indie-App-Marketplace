@@ -115,6 +115,7 @@ export type SiteSettings = {
   phoneHref: string;
   resumeUrl: string;
   links: {
+    medium?: string;
     linkedin: string;
     github: string;
     youtube: string;

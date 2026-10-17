@@ -1,0 +1,344 @@
+[
+  {
+    "_id": "post.medium.78b9c9941f9b",
+    "_type": "post",
+    "title": "What MCP Is Teaching Me About Building Complex SaaS Products",
+    "slug": {
+      "_type": "slug",
+      "current": "what-mcp-is-teaching-me-about-building-complex-saas-products-78b9c9941f9b"
+    },
+    "date": "2026-10-05",
+    "kind": "Essay",
+    "summary": "What changed when Shopify merchants could describe an objective through Claude instead of translating it into dashboard settings. A reflection on MCP, configuration fatigue, and product onboarding from my work with Dynamatic.",
+    "readingMinutes": 11,
+    "tags": [
+      "AI",
+      "Product thinking"
+    ],
+    "sourceUrl": "https://medium.com/@ismailhossain013/what-mcp-is-teaching-me-about-building-complex-saas-products-78b9c9941f9b",
+    "sourcePlatform": "Medium",
+    "body": [
+      {
+        "_type": "block",
+        "_key": "summary",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "summary-text",
+            "text": "What changed when Shopify merchants could describe an objective through Claude instead of translating it into dashboard settings. A reflection on MCP, configuration fatigue, and product onboarding from my work with Dynamatic.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "source",
+        "style": "normal",
+        "markDefs": [
+          {
+            "_type": "link",
+            "_key": "original",
+            "href": "https://medium.com/@ismailhossain013/what-mcp-is-teaching-me-about-building-complex-saas-products-78b9c9941f9b"
+          }
+        ],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-text",
+            "text": "Read the original article on Medium",
+            "marks": [
+              "original"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": "post.medium.4088de5f4d0b",
+    "_type": "post",
+    "title": "Building the Half That Reads Like a Person",
+    "slug": {
+      "_type": "slug",
+      "current": "building-the-half-that-reads-like-a-person-4088de5f4d0b"
+    },
+    "date": "2026-08-23",
+    "kind": "Essay",
+    "summary": "Building a dashboard for the questions a person actually asks about an agent system: current health, usage, sessions, judgment, daily briefings, and the record of actions. Includes the gap between an action running and its outcome being verified.",
+    "readingMinutes": 5,
+    "tags": [
+      "AI",
+      "Product thinking"
+    ],
+    "sourceUrl": "https://medium.com/@ismailhossain013/building-the-half-that-reads-like-a-person-4088de5f4d0b",
+    "sourcePlatform": "Medium",
+    "body": [
+      {
+        "_type": "block",
+        "_key": "summary",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "summary-text",
+            "text": "Building a dashboard for the questions a person actually asks about an agent system: current health, usage, sessions, judgment, daily briefings, and the record of actions. Includes the gap between an action running and its outcome being verified.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "source",
+        "style": "normal",
+        "markDefs": [
+          {
+            "_type": "link",
+            "_key": "original",
+            "href": "https://medium.com/@ismailhossain013/building-the-half-that-reads-like-a-person-4088de5f4d0b"
+          }
+        ],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-text",
+            "text": "Read the original article on Medium",
+            "marks": [
+              "original"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": "post.medium.f17ff526cb58",
+    "_type": "post",
+    "title": "The Next Design Problem Isn’t for Humans Anymore",
+    "slug": {
+      "_type": "slug",
+      "current": "the-next-design-problem-isnt-for-humans-anymore-f17ff526cb58"
+    },
+    "date": "2026-08-18",
+    "kind": "Essay",
+    "summary": "How designing for software agents changes assumptions about interfaces, contracts, and context. A reflection on the difference between information a machine can parse and information a person can understand.",
+    "readingMinutes": 8,
+    "tags": [
+      "AI",
+      "Product thinking"
+    ],
+    "sourceUrl": "https://medium.com/@ismailhossain013/the-next-design-problem-isnt-for-humans-anymore-f17ff526cb58",
+    "sourcePlatform": "Medium",
+    "body": [
+      {
+        "_type": "block",
+        "_key": "summary",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "summary-text",
+            "text": "How designing for software agents changes assumptions about interfaces, contracts, and context. A reflection on the difference between information a machine can parse and information a person can understand.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "source",
+        "style": "normal",
+        "markDefs": [
+          {
+            "_type": "link",
+            "_key": "original",
+            "href": "https://medium.com/@ismailhossain013/the-next-design-problem-isnt-for-humans-anymore-f17ff526cb58"
+          }
+        ],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-text",
+            "text": "Read the original article on Medium",
+            "marks": [
+              "original"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": "post.medium.9300db19d1aa",
+    "_type": "post",
+    "title": "Built to Degrade Gracefully",
+    "slug": {
+      "_type": "slug",
+      "current": "i-built-an-ai-agent-and-now-i-live-with-it-heres-what-that-actually-looks-like-9300db19d1aa"
+    },
+    "date": "2026-08-17",
+    "kind": "Essay",
+    "summary": "Living with an agent system through provider failures, fallback behavior, persistent context, and maintenance. A practical account of Hermes and the Alfred configuration, including the limits of what was verified.",
+    "readingMinutes": 16,
+    "tags": [
+      "AI",
+      "Product thinking"
+    ],
+    "sourceUrl": "https://medium.com/@ismailhossain013/i-built-an-ai-agent-and-now-i-live-with-it-heres-what-that-actually-looks-like-9300db19d1aa",
+    "sourcePlatform": "Medium",
+    "body": [
+      {
+        "_type": "block",
+        "_key": "summary",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "summary-text",
+            "text": "Living with an agent system through provider failures, fallback behavior, persistent context, and maintenance. A practical account of Hermes and the Alfred configuration, including the limits of what was verified.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "source",
+        "style": "normal",
+        "markDefs": [
+          {
+            "_type": "link",
+            "_key": "original",
+            "href": "https://medium.com/@ismailhossain013/i-built-an-ai-agent-and-now-i-live-with-it-heres-what-that-actually-looks-like-9300db19d1aa"
+          }
+        ],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-text",
+            "text": "Read the original article on Medium",
+            "marks": [
+              "original"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": "post.medium.4e6e465d983a",
+    "_type": "post",
+    "title": "Agent Development Framework: Solving Stateless AI’s Context Problem for Smarter, Loop-Free...",
+    "slug": {
+      "_type": "slug",
+      "current": "building-reliable-stateless-ai-agents-the-agent-development-framework-4e6e465d983a"
+    },
+    "date": "2025-08-12",
+    "kind": "Essay",
+    "summary": "A structured approach to stateless AI agents using explicit context, state tracking, and decision loops. Explores why repeated actions and lost context need system design rather than another prompt.",
+    "readingMinutes": 4,
+    "tags": [
+      "AI",
+      "Learning"
+    ],
+    "sourceUrl": "https://medium.com/@ismailhossain013/building-reliable-stateless-ai-agents-the-agent-development-framework-4e6e465d983a",
+    "sourcePlatform": "Medium",
+    "body": [
+      {
+        "_type": "block",
+        "_key": "summary",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "summary-text",
+            "text": "A structured approach to stateless AI agents using explicit context, state tracking, and decision loops. Explores why repeated actions and lost context need system design rather than another prompt.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "source",
+        "style": "normal",
+        "markDefs": [
+          {
+            "_type": "link",
+            "_key": "original",
+            "href": "https://medium.com/@ismailhossain013/building-reliable-stateless-ai-agents-the-agent-development-framework-4e6e465d983a"
+          }
+        ],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-text",
+            "text": "Read the original article on Medium",
+            "marks": [
+              "original"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "_id": "post.medium.ed13add74e22",
+    "_type": "post",
+    "title": "How AI and NotebookLM Reshaped Learning",
+    "slug": {
+      "_type": "slug",
+      "current": "how-ai-and-notebooklm-reshaped-learning-ed13add74e22"
+    },
+    "date": "2025-07-30",
+    "kind": "Essay",
+    "summary": "A personal account of using NotebookLM mind maps and audio discussions while studying. Covers organizing source material, making difficult concepts approachable, and checking AI-generated explanations.",
+    "readingMinutes": 7,
+    "tags": [
+      "AI",
+      "Learning"
+    ],
+    "sourceUrl": "https://medium.com/@ismailhossain013/how-ai-and-notebooklm-reshaped-learning-ed13add74e22",
+    "sourcePlatform": "Medium",
+    "body": [
+      {
+        "_type": "block",
+        "_key": "summary",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "summary-text",
+            "text": "A personal account of using NotebookLM mind maps and audio discussions while studying. Covers organizing source material, making difficult concepts approachable, and checking AI-generated explanations.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "source",
+        "style": "normal",
+        "markDefs": [
+          {
+            "_type": "link",
+            "_key": "original",
+            "href": "https://medium.com/@ismailhossain013/how-ai-and-notebooklm-reshaped-learning-ed13add74e22"
+          }
+        ],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-text",
+            "text": "Read the original article on Medium",
+            "marks": [
+              "original"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

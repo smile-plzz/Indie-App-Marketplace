@@ -1,5 +1,5 @@
 import { cache } from "react";
-import { client, sanityConfigured } from "./sanity";
+import { publishedReadClient, sanityConfigured } from "./sanity";
 import * as seed from "@/content/manifest";
 import type {
   AcademicProject,
@@ -12,6 +12,8 @@ import type {
   SiteSettings,
   Venture,
 } from "./types";
+
+const client = publishedReadClient();
 
 const PROJECT_FIELDS = `
   "slug": slug.current, title, year, summary, category, tags, liveUrl, repoUrl,

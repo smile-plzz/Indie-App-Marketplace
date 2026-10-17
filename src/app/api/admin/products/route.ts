@@ -38,6 +38,31 @@ export async function POST(request: Request) {
     fields.priceUSD = body.priceUSD;
     fields.status = body.status;
     fields.featured = body.featured === true;
+    // Only supplied metadata fields are changed, preserving imported evidence
+    // when an older client saves an existing product.
+    for (const key of ["sourceReadmeURL", "sourceReleaseURL", "sourceArtifactURL"]) {
+        if (!(key in body)) continue;
+        const value = String(body[key] || "").trim();
+        if (value) {
+            try {
+                if (new URL(value).protocol !== "https:") throw new Error("Invalid protocol");
+            } catch {
+                return NextResponse.json({ error: "Source links must be valid HTTPS URLs." }, { status: 400 });
+            }
+        }
+        fields[key] = value;
+    }
+    if ("sourceCommit" in body) fields.sourceCommit = String(body.sourceCommit || "").trim().slice(0, 100);
+    for (const key of ["sourceEvidenceURLs", "limitations", "publicationBlockers"]) {
+        if (!(key in body)) continue;
+        if (!Array.isArray(body[key]) || (body[key] as unknown[]).some(value => typeof value !== "string"))
+            return NextResponse.json({ error: "Source evidence, limitations and publication blockers must be lists of text." }, { status: 400 });
+        const values = (body[key] as string[]).map(value => value.trim()).filter(Boolean).slice(0, 30);
+        if (key === "sourceEvidenceURLs" && values.some(value => {
+            try { return new URL(value).protocol !== "https:"; } catch { return true; }
+        })) return NextResponse.json({ error: "Source evidence links must be valid HTTPS URLs." }, { status: 400 });
+        fields[key] = values;
+    }
     fields.systemRequirements = Array.isArray(body.systemRequirements) ? body.systemRequirements.map(String).slice(0, 30) : [];
     for (const [key, first, second] of [["features", "title", "description"], ["faq", "question", "answer"]])
         fields[key] = Array.isArray(body[key]) ? (body[key] as Record<string, unknown>[]).slice(0, 30).map((row, index) => ({ _key: `row-${index}`, [first]: String(row[first] || ""), [second]: String(row[second] || "") })) : [];

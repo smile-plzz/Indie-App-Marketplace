@@ -18,3 +18,5 @@ next-env.d.ts
 /storage/
 *.db
 *.db-journal
+
+.content-import-backup.json

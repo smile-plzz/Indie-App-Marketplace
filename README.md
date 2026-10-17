@@ -69,6 +69,21 @@ The marketplace is for my own apps only. It is not a multi-vendor platform.
 
 ## 2. Context
 
+### Prepared owner content
+
+The admin Products page includes **Import editable entities**. With Sanity configured,
+this saves eight GitHub product drafts at US$2 / BDT 246.90, eight pending license reviews,
+three unsigned release candidates, six original Medium article summaries with source links,
+and a hidden ElementShot portfolio project. It also fills missing or unchanged scaffold
+profile copy. Existing records and owner edits are preserved when the import is repeated.
+
+Run `npm run content:preview` to inspect the counts without saving. For a direct import,
+provide the Sanity environment variables to the process and run `npm run content:import`.
+The command saves a local ignored backup before importing. Never commit tokens or backups.
+
+Importing content does not publish an app for sale. Release signing, malware scanning,
+license reviews, private storage, database, payment and email configuration still apply.
+
 ### 2.1 The situation
 
 - My apps are public and open source. Anyone can read, build and run them.
